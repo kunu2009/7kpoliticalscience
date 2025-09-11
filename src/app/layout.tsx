@@ -30,7 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider defaultOpen={true}>
+          <SidebarProvider defaultOpen={false}>
             <div className="flex flex-col h-screen">
                 <MainHeader />
                 <div className="flex flex-1 overflow-hidden">
