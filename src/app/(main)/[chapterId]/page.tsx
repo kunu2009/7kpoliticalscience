@@ -1,3 +1,4 @@
+
 import { syllabus } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import {
@@ -26,7 +27,7 @@ export default function ChapterPage({
   }
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
+    <div className="p-4 md:p-8">
       <Card className="mb-8 overflow-hidden">
         <CardHeader>
           <CardTitle className="text-3xl font-headline md:text-4xl">

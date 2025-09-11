@@ -1,3 +1,4 @@
+
 import { syllabus } from '@/lib/data';
 import { FlashcardsSection } from '../[chapterId]/_components/flashcards-section';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -6,7 +7,7 @@ export default function AllFlashcardsPage() {
   const allFlashcards = syllabus.flatMap((chapter) => chapter.flashcards);
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
+    <div className="p-4 md:p-8">
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-3xl font-headline md:text-4xl">All Flashcards</CardTitle>
