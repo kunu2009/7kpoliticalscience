@@ -3,39 +3,75 @@
   "placeholderImages": [
     {
       "id": "reel-1-1",
-      "description": "Image for Separation of Powers",
+      "description": "Image for End of Cold War",
       "imageUrl": "https://picsum.photos/seed/reel11/400/600",
-      "imageHint": "government building"
+      "imageHint": "berlin wall"
     },
     {
       "id": "reel-1-2",
-      "description": "Image for Checks and Balances",
+      "description": "Image for Rise of Internet",
       "imageUrl": "https://picsum.photos/seed/reel12/400/600",
-      "imageHint": "balancing scales"
-    },
-    {
-      "id": "reel-1-3",
-      "description": "Image for Federalism",
-      "imageUrl": "https://picsum.photos/seed/reel13/400/600",
-      "imageHint": "map regions"
+      "imageHint": "network nodes"
     },
     {
       "id": "reel-2-1",
-      "description": "Image for Political Ideology",
+      "description": "Image for Economic Integration",
       "imageUrl": "https://picsum.photos/seed/reel21/400/600",
-      "imageHint": "protest crowd"
+      "imageHint": "shipping containers"
     },
     {
       "id": "reel-2-2",
-      "description": "Image for Public Opinion",
+      "description": "Image for Cultural Exchange",
       "imageUrl": "https://picsum.photos/seed/reel22/400/600",
-      "imageHint": "speech bubble"
+      "imageHint": "different flags"
     },
     {
-      "id": "reel-2-3",
-      "description": "Image for Political Socialization",
-      "imageUrl": "https://picsum.photos/seed/reel23/400/600",
-      "imageHint": "family generations"
+      "id": "reel-3-1",
+      "description": "Image for Refugee Crisis",
+      "imageUrl": "https://picsum.photos/seed/reel31/400/600",
+      "imageHint": "refugee camp"
+    },
+    {
+      "id": "reel-3-2",
+      "description": "Image for R2P",
+      "imageUrl": "https://picsum.photos/seed/reel32/400/600",
+      "imageHint": "helping hands"
+    },
+    {
+      "id": "reel-4-1",
+      "description": "Image for Kashmir Conflict",
+      "imageUrl": "https://picsum.photos/seed/reel41/400/600",
+      "imageHint": "himalayan mountains"
+    },
+    {
+      "id": "reel-4-2",
+      "description": "Image for National Integration",
+      "imageUrl": "https://picsum.photos/seed/reel42/400/600",
+      "imageHint": "diverse people"
+    },
+    {
+      "id": "reel-5-1",
+      "description": "Image for Right to Information",
+      "imageUrl": "https://picsum.photos/seed/reel51/400/600",
+      "imageHint": "magnifying glass"
+    },
+    {
+      "id": "reel-5-2",
+      "description": "Image for E-Governance",
+      "imageUrl": "https://picsum.photos/seed/reel52/400/600",
+      "imageHint": "digital city"
+    },
+    {
+      "id": "reel-6-1",
+      "description": "Image for Act East Policy",
+      "imageUrl": "https://picsum.photos/seed/reel61/400/600",
+      "imageHint": "southeast asia"
+    },
+    {
+      "id": "reel-6-2",
+      "description": "Image for India in BRICS",
+      "imageUrl": "https://picsum.photos/seed/reel62/400/600",
+      "imageHint": "brics summit"
     }
   ]
 }

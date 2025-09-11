@@ -1,3 +1,4 @@
+
 export type Flashcard = {
   id: string;
   question: string;
@@ -38,96 +39,136 @@ const generateItems = <T>(count: number, generator: (index: number) => Omit<T, '
 
 export const syllabus: Chapter[] = [
   {
-    id: 'introduction-to-political-science',
-    title: 'Intro to Political Science',
+    id: 'the-world-since-1991',
+    title: 'The World since 1991',
     content: `
-Political science is the systematic study of governance by the application of empirical and generally scientific methods of analysis. It is traditionally divided into distinct sub-fields, including comparative politics, international relations, political theory, public administration, public policy, and political methodology.
-
-At its core, political science examines the state and its organs and institutions. A key concept is {sovereignty}, which refers to the full right and power of a governing body over itself, without any interference from outside sources or bodies. Another fundamental principle is the {separation_of_powers}, an idea most famously elaborated by Montesquieu, which divides governmental authority into three branches: legislative, executive, and judicial. This structure is designed to prevent the concentration of power and is complemented by a system of {checks_and_balances}.
-
-The study also delves into {federalism}, a system of government in which entities such as states or provinces share power with a national government. This contrasts with a unitary system, where the central government holds the majority of power. Understanding these structures is crucial to analyzing how different countries are governed.
+The world has changed dramatically since 1991, marked by the end of the Cold War and the dissolution of the Soviet Union. This era saw the rise of the United States as the sole superpower, leading to a unipolar world order. Key events include the Gulf War, the rise of the internet, and the expansion of NATO.
+Concepts like {globalization} have become central, describing the increased interconnectedness of societies.
     `,
-    summary: 'This chapter introduces the foundational concepts of political science, including its sub-fields, the nature of the state, and core principles like sovereignty, separation of powers, and federalism. It sets the stage for understanding different systems of governance.',
-    keyTerms: [
-      { term: 'sovereignty' },
-      { term: 'separation of powers' },
-      { term: 'checks and balances' },
-      { term: 'federalism' },
-    ],
-    flashcards: generateItems<Flashcard>(30, i => ({
-      question: `What is the definition of political concept ${i + 1}?`,
-      answer: `This is the detailed explanation for political concept ${i + 1}.`,
+    summary: 'An overview of the major political, economic, and social transformations that have shaped the world since the end of the Cold War in 1991.',
+    keyTerms: [{ term: 'globalization' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What was a key event of the 1990s? (${i + 1})`,
+      answer: `Explanation of a key event from the 1990s.`,
     })),
-    mcqs: generateItems<MCQ>(30, i => ({
-      question: `Which of the following best describes principle ${i + 1}?`,
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `Which treaty was signed in the post-1991 era? (${i + 1})`,
       options: ['Option A', 'Option B', 'Option C', 'Option D'],
-      correctAnswer: 'Option B',
+      correctAnswer: 'Option A',
     })),
     reels: [
-      {
-        id: 'reel-1-1',
-        title: 'Separation of Powers',
-        content: 'Dividing government into legislative, executive, and judicial branches to prevent tyranny.',
-        imageId: 'reel-1-1',
-      },
-      {
-        id: 'reel-1-2',
-        title: 'Checks and Balances',
-        content: 'Each branch has powers to limit or "check" the other two, creating a balance of power.',
-        imageId: 'reel-1-2',
-      },
-      {
-        id: 'reel-1-3',
-        title: 'Federalism',
-        content: 'A system where power is divided between a central government and regional entities.',
-        imageId: 'reel-1-3',
-      },
+      { id: 'reel-1-1', title: 'End of Cold War', content: 'The collapse of the Soviet Union reshaped global politics.', imageId: 'reel-1-1' },
+      { id: 'reel-1-2', title: 'Rise of Internet', content: 'Digital revolution connecting the world.', imageId: 'reel-1-2' },
     ],
   },
   {
-    id: 'political-behavior',
-    title: 'Political Behavior',
+    id: 'globalisation',
+    title: 'Key Concepts and Issues since 1991: Globalisation',
     content: `
-Political behavior is the study of how individuals think, feel, and act in the political sphere. A central theme is {political_ideology}, a coherent set of ethical ideals, principles, and doctrines that explains how society should work and offers a political and cultural blueprint for a certain social order. Major ideologies include liberalism, conservatism, and socialism.
-
-Understanding {public_opinion} is vital for politicians and scholars alike. It represents the collective attitudes of citizens on a given issue or leader. Public opinion is shaped through a lifelong process known as {political_socialization}, where individuals develop their political attitudes, values, and beliefs. Key agents of socialization include family, schools, media, and peer groups.
-
-Electoral systems and voting behavior are also critical areas. Different systems, such as plurality, majority, or proportional representation, can have profound impacts on political outcomes and party systems.
+{Globalisation} refers to the process of interaction and integration among people, companies, and governments worldwide. It has been accelerated by advances in transportation and communication technology. It has economic, political, and cultural manifestations. Economic globalization involves the integration of international financial markets and the growth of transnational corporations.
     `,
-    summary: 'This chapter explores the factors that influence individual political actions and beliefs. It covers political ideology, the formation and measurement of public opinion, the process of political socialization, and how electoral systems affect voting behavior.',
-    keyTerms: [
-      { term: 'political ideology' },
-      { term: 'public opinion' },
-      { term: 'political socialization' },
-    ],
-    flashcards: generateItems<Flashcard>(30, i => ({
-      question: `How does political behavior concept ${i + 1} manifest?`,
-      answer: `Here is the analysis of how political behavior concept ${i + 1} is observed in society.`,
+    summary: 'This chapter explores the multifaceted concept of globalization, examining its economic, political, and cultural impacts on the modern world.',
+    keyTerms: [{ term: 'Globalisation' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What is an aspect of economic globalization? (${i + 1})`,
+      answer: `Detail about an aspect of economic globalization.`,
     })),
-    mcqs: generateItems<MCQ>(30, i => ({
-      question: `What is the primary driver of behavior ${i + 1}?`,
-      options: ['Economic factors', 'Social factors', 'Psychological factors', 'All of the above'],
-      correctAnswer: 'All of the above',
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `What organization is associated with globalization? (${i + 1})`,
+      options: ['WTO', 'NATO', 'ASEAN', 'NAFTA'],
+      correctAnswer: 'WTO',
     })),
     reels: [
-      {
-        id: 'reel-2-1',
-        title: 'Political Ideology',
-        content: 'Your guide to the beliefs and ideas that shape political systems and policies.',
-        imageId: 'reel-2-1',
-      },
-      {
-        id: 'reel-2-2',
-        title: 'Public Opinion',
-        content: 'The collective voice of the people. How is it measured and what does it influence?',
-        imageId: 'reel-2-2',
-      },
-      {
-        id: 'reel-2-3',
-        title: 'Political Socialization',
-        content: 'The lifelong process of acquiring political beliefs from family, school, and media.',
-        imageId: 'reel-2-3',
-      },
+      { id: 'reel-2-1', title: 'Economic Integration', content: 'How global markets are more connected than ever.', imageId: 'reel-2-1' },
+      { id: 'reel-2-2', title: 'Cultural Exchange', content: 'The spread of ideas, customs, and media across borders.', imageId: 'reel-2-2' },
+    ],
+  },
+  {
+    id: 'humanitarian-issues',
+    title: 'Key Concepts and Issues since 1991: Humanitarian Issues',
+    content: `
+The post-Cold War era has seen numerous {humanitarian_crises}, from genocides to natural disasters. The international community has grappled with the principle of {Responsibility_to_Protect} (R2P), which holds that states have a responsibility to protect their populations from mass atrocities. The role of non-governmental organizations (NGOs) has also grown significantly.
+    `,
+    summary: 'Examines major humanitarian challenges since 1991, including conflicts, refugees, and the international response to crises.',
+    keyTerms: [{ term: 'humanitarian crises' }, { term: 'Responsibility to Protect' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What is a major humanitarian issue? (${i + 1})`,
+      answer: `Explanation of a major humanitarian issue.`,
+    })),
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `Which UN agency deals with refugees? (${i + 1})`,
+      options: ['UNHCR', 'UNICEF', 'WHO', 'WFP'],
+      correctAnswer: 'UNHCR',
+    })),
+    reels: [
+      { id: 'reel-3-1', title: 'Refugee Crisis', content: 'Understanding the causes and impacts of global displacement.', imageId: 'reel-3-1' },
+      { id: 'reel-3-2', title: 'R2P', content: 'The principle of Responsibility to Protect explained.', imageId: 'reel-3-2' },
+    ],
+  },
+  {
+    id: 'india-challenges',
+    title: 'Contemporary India: Challenges to Peace, Stability, and National Integration',
+    content: `
+Contemporary India faces numerous challenges. These include regionalism, communalism, and terrorism. The issue of {Kashmir} remains a significant source of conflict with Pakistan. Internally, Naxalite-Maoist insurgency affects several states. The challenge of maintaining national integration in a diverse country is a constant theme in Indian politics.
+    `,
+    summary: 'An analysis of the internal and external challenges facing India, including regional conflicts, security threats, and issues of national unity.',
+    keyTerms: [{ term: 'Kashmir' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What is a challenge to Indian national integration? (${i + 1})`,
+      answer: `Details on a specific challenge.`,
+    })),
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `Which of these is an internal security challenge for India? (${i + 1})`,
+      options: ['Naxalism', 'Cyber warfare', 'Piracy', 'None of the above'],
+      correctAnswer: 'Naxalism',
+    })),
+    reels: [
+      { id: 'reel-4-1', title: 'Kashmir Conflict', content: 'A brief overview of the long-standing issue.', imageId: 'reel-4-1' },
+      { id: 'reel-4-2', title: 'National Integration', content: 'The challenges of unity in a diverse nation.', imageId: 'reel-4-2' },
+    ],
+  },
+  {
+    id: 'india-governance',
+    title: 'Contemporary India: Good Governance',
+    content: `
+{Good_governance} in India is a major focus. Initiatives like the Right to Information (RTI) Act have aimed to increase transparency and accountability. E-governance projects seek to improve public service delivery. However, corruption remains a significant challenge, and civil society organizations play a crucial role in advocating for reforms.
+    `,
+    summary: 'This chapter covers the concept of good governance in India, including key reforms, challenges like corruption, and the role of civil society.',
+    keyTerms: [{ term: 'Good governance' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What is an example of a good governance initiative in India? (${i + 1})`,
+      answer: `Explanation of an initiative.`,
+    })),
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `The RTI Act is related to what? (${i + 1})`,
+      options: ['Transparency', 'Education', 'Health', 'Defense'],
+      correctAnswer: 'Transparency',
+    })),
+    reels: [
+      { id: 'reel-5-1', title: 'Right to Information', content: 'Empowering citizens to demand accountability.', imageId: 'reel-5-1' },
+      { id: 'reel-5-2', title: 'E-Governance', content: 'Using technology to deliver public services.', imageId: 'reel-5-2' },
+    ],
+  },
+  {
+    id: 'india-and-the-world',
+    title: 'India and the World',
+    content: `
+India's foreign policy has evolved since the Cold War. The {Look_East_Policy} (now Act East) signifies a strategic shift towards Southeast Asia. India has also deepened its relationship with the United States and plays a key role in multilateral forums like BRICS and the G20. Its relationship with China and other neighbors remains a central foreign policy challenge.
+    `,
+    summary: "An exploration of India's foreign policy, its strategic partnerships, and its role in global and regional politics.",
+    keyTerms: [{ term: 'Look East Policy' }],
+    flashcards: generateItems<Flashcard>(10, i => ({
+      question: `What is a key feature of India's foreign policy? (${i + 1})`,
+      answer: `Detail about India's foreign policy.`,
+    })),
+    mcqs: generateItems<MCQ>(10, i => ({
+      question: `BRICS includes which countries? (${i + 1})`,
+      options: ['Brazil, Russia, India, China, South Africa', 'Britain, Russia, India, Canada, Spain', 'None of the above', 'All of the above'],
+      correctAnswer: 'Brazil, Russia, India, China, South Africa',
+    })),
+    reels: [
+      { id: 'reel-6-1', title: 'Act East Policy', content: 'India\'s pivot towards Southeast and East Asia.', imageId: 'reel-6-1' },
+      { id: 'reel-6-2', title: 'India in BRICS', content: 'India\'s role in the bloc of emerging economies.', imageId: 'reel-6-2' },
     ],
   },
 ];
