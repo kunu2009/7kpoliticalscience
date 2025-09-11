@@ -25,7 +25,7 @@ export function SyllabusSidebar() {
   ];
 
   return (
-    <Sidebar side="left" collapsible="icon">
+    <Sidebar side="right" collapsible="icon">
       <SidebarHeader>
         <h2 className="font-semibold text-lg">Syllabus</h2>
       </SidebarHeader>
