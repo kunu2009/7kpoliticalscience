@@ -7,7 +7,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <div className="flex flex-1 overflow-hidden">
         <SyllabusSidebar />
         <main className="flex-1 overflow-y-auto">{children}</main>
