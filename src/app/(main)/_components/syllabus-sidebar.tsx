@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { BrainCircuit, FileQuestion, Film, LayoutDashboard } from 'lucide-react';
+import { BrainCircuit, FileQuestion, Film } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -18,7 +18,6 @@ export function SyllabusSidebar() {
   const pathname = usePathname();
 
   const mainLinks = [
-    { href: '/', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/all-flashcards', label: 'Flashcards', icon: BrainCircuit },
     { href: '/all-mcqs', label: 'MCQs', icon: FileQuestion },
     { href: '/all-reels', label: 'Reels', icon: Film },

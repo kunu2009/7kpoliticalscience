@@ -1,4 +1,5 @@
-// This file is intentionally left empty. The content has been moved to src/app/(main)/page.tsx
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return null;
+  redirect('/all-reels');
 }
