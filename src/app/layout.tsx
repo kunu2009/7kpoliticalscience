@@ -30,11 +30,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider defaultOpen={false}>
-            <MainHeader />
-            <div className="flex flex-1 overflow-hidden h-[calc(100vh-4rem)]">
-              <SyllabusSidebar />
-              <main className="flex-1 overflow-y-auto">{children}</main>
+          <SidebarProvider defaultOpen={true}>
+            <div className="flex flex-col h-screen">
+                <MainHeader />
+                <div className="flex flex-1 overflow-hidden">
+                    <SyllabusSidebar />
+                    <main className="flex-1 overflow-y-auto">{children}</main>
+                </div>
             </div>
           </SidebarProvider>
           <Toaster />
