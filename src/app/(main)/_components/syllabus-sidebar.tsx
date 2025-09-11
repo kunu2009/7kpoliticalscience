@@ -9,8 +9,7 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { syllabus } from '@/lib/data';
-import { Book, BrainCircuit, FileQuestion, Film } from 'lucide-react';
+import { BrainCircuit, FileQuestion, Film, LayoutDashboard } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -19,6 +18,7 @@ export function SyllabusSidebar() {
   const pathname = usePathname();
 
   const mainLinks = [
+    { href: '/', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/all-flashcards', label: 'Flashcards', icon: BrainCircuit },
     { href: '/all-mcqs', label: 'MCQs', icon: FileQuestion },
     { href: '/all-reels', label: 'Reels', icon: Film },
@@ -51,27 +51,6 @@ export function SyllabusSidebar() {
                     </SidebarMenuItem>
                 )
              })}
-            <SidebarSeparator />
-            {syllabus.map((chapter) => {
-              const isActive = pathname === `/${chapter.id}`;
-              return (
-                <SidebarMenuItem key={chapter.id}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive}
-                    tooltip={{
-                      children: chapter.title,
-                      className: 'w-48 text-center',
-                    }}
-                  >
-                    <Link href={`/${chapter.id}`}>
-                      <Book />
-                      <span>{chapter.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              );
-            })}
           </SidebarMenu>
         </ScrollArea>
       </SidebarContent>
