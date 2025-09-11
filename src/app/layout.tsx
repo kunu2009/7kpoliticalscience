@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { MainHeader } from '@/app/(main)/_components/main-header';
 
 export const metadata: Metadata = {
   title: 'PolSci Guide',
@@ -27,7 +28,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MainHeader />
+          <main>{children}</main>
           <Toaster />
         </ThemeProvider>
       </body>

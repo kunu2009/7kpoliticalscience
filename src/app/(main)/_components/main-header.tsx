@@ -1,28 +1,23 @@
 'use client';
 
-import { BookOpen, Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
+import { BookOpen } from 'lucide-react';
+import Link from 'next/link';
 
 export function MainHeader() {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
-      <div className="flex items-center gap-2">
-        <BookOpen className="h-6 w-6 text-primary" />
-        <h1 className="text-xl font-bold tracking-tight">PolSci Guide</h1>
+    <header className="flex h-16 items-center justify-between border-b bg-card px-4 md:px-6">
+      <div className="flex items-center gap-4">
+        <Button variant="ghost" asChild>
+          <Link href="/">
+            <BookOpen className="h-6 w-6" />
+            <span className="ml-2 font-bold">PolSci Guide</span>
+          </Link>
+        </Button>
       </div>
-      <div className="relative ml-auto flex-1 md:grow-0">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search syllabus..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
-        />
-      </div>
-      <ThemeToggle />
-      <div className="block md:hidden">
-        <SidebarTrigger />
+      <div className="flex items-center gap-4">
+        <ThemeToggle />
       </div>
     </header>
   );
