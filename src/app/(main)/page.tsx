@@ -9,10 +9,12 @@ import {
 } from '@/components/ui/card';
 import { ArrowRight, BookCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { DashboardFlashcard } from './_components/dashboard-flashcard';
 
 export default function Home() {
   const totalChapters = syllabus.length;
-  const totalFlashcards = syllabus.reduce((acc, chap) => acc + chap.flashcards.length, 0);
+  const allFlashcards = syllabus.flatMap((chapter) => chapter.flashcards);
+  const totalFlashcards = allFlashcards.length;
   const totalMcqs = syllabus.reduce((acc, chap) => acc + chap.mcqs.length, 0);
 
   return (
@@ -36,7 +38,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-8">
+      {allFlashcards.length > 0 && (
+        <DashboardFlashcard flashcards={allFlashcards} />
+      )}
+
+      <div className="my-8">
         <h2 className="text-2xl font-bold font-headline">Syllabus Chapters</h2>
         <p className="text-muted-foreground">Select a chapter to begin your study session.</p>
       </div>
