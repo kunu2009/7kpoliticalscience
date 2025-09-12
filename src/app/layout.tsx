@@ -3,7 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { MainHeader } from '@/app/(main)/_components/main-header';
-import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { SyllabusSidebar } from './(main)/_components/syllabus-sidebar';
 
 export const metadata: Metadata = {
@@ -32,10 +32,12 @@ export default function RootLayout({
         >
           <SidebarProvider defaultOpen={false}>
               <div className="flex flex-col h-screen">
-                <MainHeader />
                 <div className="flex flex-1 overflow-hidden">
                     <SyllabusSidebar />
-                    <main className="flex-1 overflow-y-auto">{children}</main>
+                    <div className="flex flex-col flex-1">
+                      <MainHeader />
+                      <main className="flex-1 overflow-y-auto">{children}</main>
+                    </div>
                 </div>
             </div>
           </SidebarProvider>

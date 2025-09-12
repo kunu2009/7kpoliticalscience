@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -8,11 +9,14 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
-import { BrainCircuit, FileQuestion, Film } from 'lucide-react';
+import { BrainCircuit, FileQuestion, Film, BookCopy } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { syllabus } from '@/lib/data';
 
 export function SyllabusSidebar() {
   const pathname = usePathname();
@@ -24,8 +28,9 @@ export function SyllabusSidebar() {
   ];
 
   return (
-    <Sidebar side="right" collapsible="icon">
+    <Sidebar side="left" collapsible="icon">
       <SidebarHeader>
+        {/* You can add a logo or title here if you like */}
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea className="h-full">
@@ -51,6 +56,36 @@ export function SyllabusSidebar() {
                 )
              })}
           </SidebarMenu>
+
+          <SidebarSeparator />
+          
+          <SidebarGroup>
+            <SidebarGroupLabel>Chapters</SidebarGroupLabel>
+            <SidebarMenu>
+                {syllabus.map((chapter) => {
+                    const isActive = pathname === `/${chapter.id}`;
+                    return (
+                        <SidebarMenuItem key={chapter.id}>
+                            <SidebarMenuButton
+                                asChild
+                                size="sm"
+                                isActive={isActive}
+                                 tooltip={{
+                                    children: chapter.title,
+                                    className: 'w-48 text-center',
+                                }}
+                            >
+                                <Link href={`/${chapter.id}`}>
+                                    <BookCopy />
+                                    <span>{chapter.title}</span>
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    )
+                })}
+            </SidebarMenu>
+          </SidebarGroup>
+
         </ScrollArea>
       </SidebarContent>
     </Sidebar>
