@@ -9,6 +9,7 @@ import { SyllabusSidebar } from './(main)/_components/syllabus-sidebar';
 export const metadata: Metadata = {
   title: 'PolSci Guide',
   description: 'Your comprehensive guide to Political Science.',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -33,11 +34,11 @@ export default function RootLayout({
           <SidebarProvider defaultOpen={false}>
               <div className="flex flex-col h-screen">
                 <div className="flex flex-1 overflow-hidden">
-                    <SyllabusSidebar />
                     <div className="flex flex-col flex-1">
                       <MainHeader />
                       <main className="flex-1 overflow-y-auto">{children}</main>
                     </div>
+                    <SyllabusSidebar />
                 </div>
             </div>
           </SidebarProvider>

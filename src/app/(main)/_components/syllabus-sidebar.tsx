@@ -28,7 +28,7 @@ export function SyllabusSidebar() {
   ];
 
   return (
-    <Sidebar side="left" collapsible="icon">
+    <Sidebar side="right" collapsible="icon">
       <SidebarHeader>
         {/* You can add a logo or title here if you like */}
       </SidebarHeader>
