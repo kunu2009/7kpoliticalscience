@@ -11,7 +11,7 @@ import {
   SidebarGroup,
   SidebarClose,
 } from '@/components/ui/sidebar';
-import { BrainCircuit, FileQuestion, Film, BookCopy, BookOpen } from 'lucide-react';
+import { BrainCircuit, FileQuestion, Film, BookCopy, Home } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -32,8 +32,8 @@ export function SyllabusSidebar() {
         <SidebarHeader className="flex items-center justify-between">
            <Button variant="ghost" asChild>
               <Link href="/">
-                <BookOpen className="h-6 w-6" />
-                <span className="ml-2 font-bold group-data-[collapsed=icon]:hidden">PolSci Guide</span>
+                <Home className="h-6 w-6" />
+                <span className="ml-2 font-bold group-data-[collapsed=icon]:hidden">Dashboard</span>
               </Link>
             </Button>
           <SidebarClose className="md:hidden" />

@@ -3,7 +3,7 @@
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { BookOpen } from 'lucide-react';
+import { Home } from 'lucide-react';
 import Link from 'next/link';
 
 export function MainHeader() {
@@ -13,8 +13,8 @@ export function MainHeader() {
         <SidebarTrigger className="md:hidden" />
         <Button variant="ghost" asChild>
           <Link href="/">
-            <BookOpen className="h-6 w-6" />
-            <span className="ml-2 font-bold hidden sm:inline">PolSci Guide</span>
+            <Home className="h-6 w-6" />
+            <span className="ml-2 font-bold hidden sm:inline">Dashboard</span>
           </Link>
         </Button>
       </div>
