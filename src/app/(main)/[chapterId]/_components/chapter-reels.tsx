@@ -1,10 +1,10 @@
+
 'use client';
 
 import type { Reel } from '@/lib/data';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { Lightbulb } from 'lucide-react';
 
 const cardColors = [
   'bg-blue-100 dark:bg-blue-900/30',
@@ -19,18 +19,13 @@ const cardColors = [
 
 export function ChapterReels({ reels }: { reels: Reel[] }) {
   return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-headline font-bold mb-4 flex items-center">
-        <Lightbulb className="mr-2 h-6 w-6 text-primary" />
-        Chapter Reels
-      </h2>
-      <ScrollArea className="h-[600px] w-full rounded-lg border bg-muted/30 p-4 md:p-6">
-        <div className="flex flex-col items-center gap-6">
+      <ScrollArea className="h-[75vh] w-full">
+        <div className="flex flex-col items-center gap-6 p-4 md:p-6">
           {reels.map((reel, index) => (
             <Card
               key={reel.id}
               className={cn(
-                'w-full max-w-2xl min-h-[250px] flex flex-col justify-center transition-all hover:shadow-xl shadow-lg rounded-2xl',
+                'w-full max-w-sm min-h-[500px] aspect-[9/16] flex flex-col justify-center transition-all hover:shadow-xl shadow-lg rounded-2xl',
                 cardColors[index % cardColors.length]
               )}
             >
@@ -46,6 +41,5 @@ export function ChapterReels({ reels }: { reels: Reel[] }) {
           ))}
         </div>
       </ScrollArea>
-    </div>
   );
 }

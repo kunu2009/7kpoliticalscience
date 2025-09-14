@@ -1,3 +1,4 @@
+
 import type { Reel } from '@/lib/data';
 import {
   Carousel,
@@ -12,23 +13,22 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function ReelsSection({ reels }: { reels: Reel[] }) {
   return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-headline font-bold mb-4">Key Concepts at a Glance</h2>
+    <div className="flex justify-center py-8">
       <Carousel
         opts={{
-          align: 'start',
+          align: 'center',
           loop: true,
         }}
-        className="w-full"
+        className="w-full max-w-xs"
       >
         <CarouselContent>
           {reels.map((reel) => {
             const placeholder = PlaceHolderImages.find(p => p.id === reel.imageId);
             return (
-              <CarouselItem key={reel.id} className="md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={reel.id}>
                 <div className="p-1">
-                  <Card className="overflow-hidden h-[450px] flex flex-col group">
-                    <div className="relative w-full h-3/5">
+                  <Card className="overflow-hidden aspect-[9/16] flex flex-col group rounded-2xl">
+                    <div className="relative w-full h-full">
                         {placeholder && (
                             <Image
                                 src={placeholder.imageUrl}
@@ -39,10 +39,11 @@ export function ReelsSection({ reels }: { reels: Reel[] }) {
                                 className="transition-transform duration-500 group-hover:scale-105"
                             />
                         )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     </div>
-                    <CardContent className="p-4 flex-1 flex flex-col justify-center bg-card">
-                      <h3 className="text-lg font-bold font-headline">{reel.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-2">{reel.content}</p>
+                    <CardContent className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                      <h3 className="text-xl font-bold font-headline">{reel.title}</h3>
+                      <p className="text-sm mt-2">{reel.content}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -50,8 +51,8 @@ export function ReelsSection({ reels }: { reels: Reel[] }) {
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="hidden md:flex"/>
-        <CarouselNext className="hidden md:flex"/>
+        <CarouselPrevious className="hidden md:flex -left-16"/>
+        <CarouselNext className="hidden md:flex -right-16"/>
       </Carousel>
     </div>
   );

@@ -4,9 +4,6 @@ import { notFound } from 'next/navigation';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChapterDisplay } from './_components/chapter-display';
@@ -14,7 +11,7 @@ import { FlashcardsSection } from './_components/flashcards-section';
 import { McqSection } from './_components/mcq-section';
 import { ReelsSection } from './_components/reels-section';
 import { ChapterReels } from './_components/chapter-reels';
-import { BookText, BrainCircuit, FileQuestion } from 'lucide-react';
+import { BookText, BrainCircuit, FileQuestion, Film, Lightbulb } from 'lucide-react';
 
 export default function ChapterPage({
   params,
@@ -30,20 +27,14 @@ export default function ChapterPage({
   return (
     <div className="p-4 md:p-8">
       <Card className="mb-8 overflow-hidden">
-        <CardHeader>
-          <CardTitle className="text-3xl font-headline md:text-4xl">
-            {chapter.title}
-          </CardTitle>
-          <CardDescription>{chapter.summary}</CardDescription>
-        </CardHeader>
+        <CardContent className="p-6">
+          <h1 className="text-3xl font-headline md:text-4xl">{chapter.title}</h1>
+          <p className="mt-2 text-muted-foreground">{chapter.summary}</p>
+        </CardContent>
       </Card>
-      
-      <ReelsSection reels={chapter.reels} />
-      
-      <ChapterReels reels={chapter.reels} />
 
       <Tabs defaultValue="content" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 md:w-[400px]">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           <TabsTrigger value="content">
             <BookText className="mr-2 h-4 w-4" />
             Content
@@ -55,6 +46,14 @@ export default function ChapterPage({
           <TabsTrigger value="mcqs">
             <FileQuestion className="mr-2 h-4 w-4" />
             MCQs
+          </TabsTrigger>
+          <TabsTrigger value="key-concepts">
+            <Lightbulb className="mr-2 h-4 w-4" />
+            Key Concepts
+          </TabsTrigger>
+          <TabsTrigger value="reels">
+            <Film className="mr-2 h-4 w-4" />
+            Reels
           </TabsTrigger>
         </TabsList>
         <TabsContent value="content">
@@ -69,6 +68,12 @@ export default function ChapterPage({
         </TabsContent>
         <TabsContent value="mcqs">
           <McqSection mcqs={chapter.mcqs} />
+        </TabsContent>
+        <TabsContent value="key-concepts">
+           <ReelsSection reels={chapter.reels} />
+        </TabsContent>
+        <TabsContent value="reels">
+            <ChapterReels reels={chapter.reels} />
         </TabsContent>
       </Tabs>
     </div>
