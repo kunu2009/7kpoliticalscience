@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
   SidebarGroup,
-  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import { BrainCircuit, FileQuestion, Film, BookCopy } from 'lucide-react';
 import Link from 'next/link';
@@ -59,7 +58,6 @@ export function SyllabusSidebar() {
           <SidebarSeparator />
           
           <SidebarGroup>
-            <SidebarGroupLabel>Chapters</SidebarGroupLabel>
             <SidebarMenu>
                 {syllabus.map((chapter) => {
                     const isActive = pathname === `/${chapter.id}`;
