@@ -1,6 +1,5 @@
 'use client';
 
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { BookOpen } from 'lucide-react';
@@ -19,7 +18,6 @@ export function MainHeader() {
       </div>
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        <SidebarTrigger className="md:hidden" />
       </div>
     </header>
   );
