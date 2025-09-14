@@ -18,7 +18,7 @@ export default function DashboardPage() {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-3xl font-headline md:text-4xl">
-            Welcome to Your PolSci Guide
+            Welcome to Your 7KPolSci Guide
           </CardTitle>
           <CardDescription>
             Select a chapter below to start learning, or try a random flashcard!
