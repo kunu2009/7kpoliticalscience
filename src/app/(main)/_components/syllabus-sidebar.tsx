@@ -49,7 +49,6 @@ export function SyllabusSidebar() {
                         >
                             <Link href={link.href}>
                                 <link.icon />
-                                <span>{link.label}</span>
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -77,7 +76,6 @@ export function SyllabusSidebar() {
                             >
                                 <Link href={`/${chapter.id}`}>
                                     <BookCopy />
-                                    <span>{chapter.title}</span>
                                 </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
