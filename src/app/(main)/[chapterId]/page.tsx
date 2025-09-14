@@ -13,6 +13,7 @@ import { ChapterDisplay } from './_components/chapter-display';
 import { FlashcardsSection } from './_components/flashcards-section';
 import { McqSection } from './_components/mcq-section';
 import { ReelsSection } from './_components/reels-section';
+import { ChapterReels } from './_components/chapter-reels';
 import { BookText, BrainCircuit, FileQuestion } from 'lucide-react';
 
 export default function ChapterPage({
@@ -38,6 +39,8 @@ export default function ChapterPage({
       </Card>
       
       <ReelsSection reels={chapter.reels} />
+      
+      <ChapterReels reels={chapter.reels} />
 
       <Tabs defaultValue="content" className="w-full">
         <TabsList className="grid w-full grid-cols-3 md:w-[400px]">
