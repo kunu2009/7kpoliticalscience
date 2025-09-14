@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-import { MainHeader } from '@/app/(main)/_components/main-header';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { SyllabusSidebar } from './(main)/_components/syllabus-sidebar';
 
 export const metadata: Metadata = {
   title: 'PolSci Guide',
@@ -31,17 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider defaultOpen={true}>
-              <div className="flex flex-col h-screen">
-                <div className="flex flex-1 overflow-hidden">
-                    <SyllabusSidebar />
-                    <div className="flex flex-col flex-1">
-                      <MainHeader />
-                      <main className="flex-1 overflow-y-auto">{children}</main>
-                    </div>
-                </div>
-            </div>
-          </SidebarProvider>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>
