@@ -8,8 +8,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { ArrowRight, Book } from 'lucide-react';
+import { DashboardFlashcard } from './_components/dashboard-flashcard';
 
 export default function DashboardPage() {
+  const allFlashcards = syllabus.flatMap((chapter) => chapter.flashcards);
+
   return (
     <div className="p-4 md:p-8">
       <Card className="mb-8">
@@ -18,12 +21,15 @@ export default function DashboardPage() {
             Welcome to Your PolSci Guide
           </CardTitle>
           <CardDescription>
-            Select a chapter below to start learning.
+            Select a chapter below to start learning, or try a random flashcard!
           </CardDescription>
         </CardHeader>
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <DashboardFlashcard flashcards={allFlashcards} />
+
+      <h2 className="mb-4 mt-8 text-2xl font-headline">All Chapters</h2>
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {syllabus.map((chapter) => (
           <Link
             href={`/${chapter.id}`}

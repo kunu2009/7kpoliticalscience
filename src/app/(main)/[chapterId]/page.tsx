@@ -12,6 +12,7 @@ import { McqSection } from './_components/mcq-section';
 import { ReelsSection } from './_components/reels-section';
 import { ChapterReels } from './_components/chapter-reels';
 import { BookText, BrainCircuit, FileQuestion, Film, Lightbulb } from 'lucide-react';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export default function ChapterPage({
   params,
@@ -34,28 +35,33 @@ export default function ChapterPage({
       </Card>
 
       <Tabs defaultValue="content" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-          <TabsTrigger value="content">
-            <BookText className="mr-2 h-4 w-4" />
-            Content
-          </TabsTrigger>
-          <TabsTrigger value="flashcards">
-            <BrainCircuit className="mr-2 h-4 w-4" />
-            Flashcards
-          </TabsTrigger>
-          <TabsTrigger value="mcqs">
-            <FileQuestion className="mr-2 h-4 w-4" />
-            MCQs
-          </TabsTrigger>
-          <TabsTrigger value="key-concepts">
-            <Lightbulb className="mr-2 h-4 w-4" />
-            Key Concepts
-          </TabsTrigger>
-          <TabsTrigger value="reels">
-            <Film className="mr-2 h-4 w-4" />
-            Reels
-          </TabsTrigger>
-        </TabsList>
+        <div className="relative">
+           <ScrollArea>
+            <TabsList className="grid w-full max-w-full grid-cols-5">
+                <TabsTrigger value="content">
+                    <BookText className="mr-2 h-4 w-4" />
+                    Content
+                </TabsTrigger>
+                <TabsTrigger value="flashcards">
+                    <BrainCircuit className="mr-2 h-4 w-4" />
+                    Flashcards
+                </TabsTrigger>
+                <TabsTrigger value="mcqs">
+                    <FileQuestion className="mr-2 h-4 w-4" />
+                    MCQs
+                </TabsTrigger>
+                <TabsTrigger value="key-concepts">
+                    <Lightbulb className="mr-2 h-4 w-4" />
+                    Key Concepts
+                </TabsTrigger>
+                <TabsTrigger value="reels">
+                    <Film className="mr-2 h-4 w-4" />
+                    Reels
+                </TabsTrigger>
+            </TabsList>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        </div>
         <TabsContent value="content">
           <Card>
             <CardContent className="p-6">
