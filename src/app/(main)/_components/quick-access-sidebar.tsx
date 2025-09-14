@@ -3,9 +3,11 @@
 
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
-import { BrainCircuit, FileQuestion, Film } from 'lucide-react';
+import { BrainCircuit, FileQuestion, Film, BookCopy } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { syllabus } from '@/lib/data';
+import { Separator } from '@/components/ui/separator';
 
 const mainLinks = [
   { href: '/all-flashcards', label: 'Flashcards', icon: BrainCircuit },
@@ -38,6 +40,27 @@ export function QuickAccessSidebar() {
                             <TooltipContent side="left">{link.label}</TooltipContent>
                         </Tooltip>
                      )
+                })}
+                <Separator className="my-1" />
+                {syllabus.map((chapter) => {
+                    const isActive = pathname === `/${chapter.id}`;
+                    return (
+                        <Tooltip key={chapter.id}>
+                            <TooltipTrigger asChild>
+                            <Link
+                                href={`/${chapter.id}`}
+                                className={cn(
+                                    "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
+                                    isActive && "bg-primary text-primary-foreground"
+                                )}
+                                >
+                                <BookCopy className="h-5 w-5" />
+                                <span className="sr-only">{chapter.title}</span>
+                                </Link>
+                            </TooltipTrigger>
+                            <TooltipContent side="left">{chapter.title}</TooltipContent>
+                        </Tooltip>
+                    )
                 })}
                 </nav>
             </TooltipProvider>
