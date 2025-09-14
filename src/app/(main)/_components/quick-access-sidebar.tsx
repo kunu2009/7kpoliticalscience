@@ -42,7 +42,7 @@ export function QuickAccessSidebar() {
                      )
                 })}
                 <Separator className="my-1" />
-                {syllabus.map((chapter) => {
+                {syllabus.map((chapter, index) => {
                     const isActive = pathname === `/${chapter.id}`;
                     return (
                         <Tooltip key={chapter.id}>
@@ -50,11 +50,14 @@ export function QuickAccessSidebar() {
                             <Link
                                 href={`/${chapter.id}`}
                                 className={cn(
-                                    "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
+                                    "relative flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
                                     isActive && "bg-primary text-primary-foreground"
                                 )}
                                 >
                                 <BookCopy className="h-5 w-5" />
+                                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">
+                                    {index + 1}
+                                </span>
                                 <span className="sr-only">{chapter.title}</span>
                                 </Link>
                             </TooltipTrigger>
