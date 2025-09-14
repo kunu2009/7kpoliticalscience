@@ -1,5 +1,4 @@
 
-
 import { syllabus } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import {
@@ -37,8 +36,8 @@ export default function ChapterPage({
 
       <Tabs defaultValue="content" className="w-full">
         <div className="relative">
-           <ScrollArea>
-            <TabsList className="grid w-full max-w-full grid-cols-5">
+           <ScrollArea className="w-full whitespace-nowrap">
+            <TabsList>
                 <TabsTrigger value="content">
                     <BookText className="mr-2 h-4 w-4" />
                     Content

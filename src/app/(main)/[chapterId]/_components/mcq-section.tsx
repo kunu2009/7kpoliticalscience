@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -46,13 +47,13 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
 
   if (currentIndex >= mcqs.length) {
     return (
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
+        <Card className="flex flex-col items-center justify-center p-6 md:p-8 text-center">
             <CardHeader>
-                <CardTitle className="text-3xl">Quiz Complete!</CardTitle>
+                <CardTitle className="text-2xl md:text-3xl">Quiz Complete!</CardTitle>
                 <CardDescription>You've finished the quiz for this chapter.</CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="text-4xl font-bold">Your Score: {score} / {mcqs.length}</p>
+                <p className="text-3xl md:text-4xl font-bold">Your Score: {score} / {mcqs.length}</p>
             </CardContent>
             <CardFooter>
                 <Button onClick={resetQuiz}>Take Again</Button>
@@ -63,7 +64,7 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="p-4 md:p-6">
         <div className="space-y-2">
             <div className="flex justify-between items-baseline">
                 <p className="text-sm font-medium text-muted-foreground">Question {currentIndex + 1} of {mcqs.length}</p>
@@ -71,9 +72,9 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
             </div>
             <Progress value={progress} aria-label={`${Math.round(progress)}% of quiz complete`} />
         </div>
-        <CardTitle className="pt-4">{currentMcq.question}</CardTitle>
+        <CardTitle className="pt-4 text-base md:text-lg">{currentMcq.question}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3 p-4 md:p-6">
         <RadioGroup
           value={selectedAnswer ?? ''}
           onValueChange={setSelectedAnswer}
@@ -86,13 +87,13 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
               <div
                 key={index}
                 className={cn(
-                    "flex items-center space-x-3 rounded-md border p-4 transition-all",
+                    "flex items-center space-x-3 rounded-md border p-3 md:p-4 transition-all",
                     isAnswered && isCorrect && "border-green-500 bg-green-500/10",
                     isAnswered && isSelected && !isCorrect && "border-red-500 bg-red-500/10"
                 )}
               >
                 <RadioGroupItem value={option} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
+                <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer text-sm md:text-base">
                   {option}
                 </Label>
                 {isAnswered && isCorrect && <CheckCircle className="h-5 w-5 text-green-500" />}
@@ -102,7 +103,7 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
           })}
         </RadioGroup>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="p-4 md:p-6">
         {isAnswered ? (
           <Button onClick={handleNext} className="w-full">
             {currentIndex === mcqs.length - 1 ? "Finish Quiz" : "Next Question"}

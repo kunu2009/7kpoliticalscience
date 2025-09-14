@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -27,7 +28,7 @@ export function FlashcardsSection({ flashcards }: { flashcards: Flashcard[] }) {
   
   return (
     <Card>
-      <CardContent className="p-6 flex flex-col items-center gap-6">
+      <CardContent className="p-4 md:p-6 flex flex-col items-center gap-4 md:gap-6">
         <div className="w-full max-w-2xl space-y-2">
             <div className="flex justify-between items-baseline">
                 <p className="text-sm font-medium text-muted-foreground">Flashcard Progress</p>
@@ -37,7 +38,7 @@ export function FlashcardsSection({ flashcards }: { flashcards: Flashcard[] }) {
         </div>
         
         <div 
-          className="w-full max-w-2xl h-64 [perspective:1000px] cursor-pointer"
+          className="w-full max-w-2xl h-56 md:h-64 [perspective:1000px] cursor-pointer"
           onClick={() => setIsFlipped(!isFlipped)}
           onKeyDown={(e) => e.key === ' ' || e.key === 'Enter' ? setIsFlipped(!isFlipped) : undefined}
           tabIndex={0}
@@ -50,22 +51,22 @@ export function FlashcardsSection({ flashcards }: { flashcards: Flashcard[] }) {
               { '[transform:rotateY(180deg)]': isFlipped }
             )}
           >
-            <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg border bg-card text-card-foreground shadow-sm flex items-center justify-center p-6">
-              <p className="text-xl font-semibold">{currentFlashcard.question}</p>
+            <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg border bg-card text-card-foreground shadow-sm flex items-center justify-center p-4 md:p-6">
+              <p className="text-lg md:text-xl font-semibold">{currentFlashcard.question}</p>
             </div>
-            <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-lg border bg-primary text-primary-foreground shadow-sm flex items-center justify-center p-6">
-              <p className="text-lg">{currentFlashcard.answer}</p>
+            <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-lg border bg-primary text-primary-foreground shadow-sm flex items-center justify-center p-4 md:p-6">
+              <p className="text-base md:text-lg">{currentFlashcard.answer}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-2 md:gap-4">
           <Button variant="outline" size="icon" onClick={handlePrev} aria-label="Previous card">
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <Button variant="secondary" onClick={() => setIsFlipped(!isFlipped)}>
             <RotateCw className="mr-2 h-4 w-4" />
-            Flip Card
+            <span className="hidden sm:inline">Flip Card</span>
           </Button>
           <Button variant="outline" size="icon" onClick={handleNext} aria-label="Next card">
             <ArrowRight className="h-4 w-4" />
