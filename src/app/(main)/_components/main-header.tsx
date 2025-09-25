@@ -3,7 +3,7 @@
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { Home } from 'lucide-react';
+import { Home, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export function MainHeader() {
@@ -15,6 +15,12 @@ export function MainHeader() {
           <Link href="/">
             <Home className="h-6 w-6" />
             <span className="ml-2 font-bold hidden sm:inline">Dashboard</span>
+          </Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link href="/progress">
+            <TrendingUp className="h-6 w-6" />
+            <span className="ml-2 font-bold hidden sm:inline">Progress</span>
           </Link>
         </Button>
       </div>

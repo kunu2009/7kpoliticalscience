@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
+import { progressTracker } from '@/lib/progress';
 
 const cardColors = [
   'bg-blue-100 dark:bg-blue-900/30',
@@ -19,7 +20,12 @@ const cardColors = [
   'bg-orange-100 dark:bg-orange-900/30',
 ];
 
-export function ChapterReels({ reels }: { reels: Reel[] }) {
+interface ChapterReelsProps {
+  reels: Reel[];
+  chapterId: string;
+}
+
+export function ChapterReels({ reels, chapterId }: ChapterReelsProps) {
   const [selectedReel, setSelectedReel] = useState<Reel | null>(null);
   const fullScreenContainerRef = useRef<HTMLDivElement>(null);
   const selectedReelRef = useRef<HTMLDivElement>(null);
@@ -30,8 +36,25 @@ export function ChapterReels({ reels }: { reels: Reel[] }) {
     }
   }, [selectedReel]);
 
+  // Initialize progress tracking when component mounts
+  useEffect(() => {
+    if (reels.length > 0) {
+      const currentProgress = progressTracker.getChapterProgress(chapterId);
+      if (!currentProgress) {
+        progressTracker.initializeChapterProgress(chapterId, {
+          flashcards: 0,
+          mcqs: 0,
+          videos: 0,
+          reels: reels.length
+        });
+      }
+    }
+  }, [chapterId, reels.length]);
+
   const handleOpenReel = (reel: Reel) => {
     setSelectedReel(reel);
+    // Track reel view
+    progressTracker.markReelViewed(chapterId, reel.id);
   };
 
   const handleClose = () => {
@@ -40,65 +63,67 @@ export function ChapterReels({ reels }: { reels: Reel[] }) {
 
   return (
     <>
-      <ScrollArea className="h-[75vh] w-full">
-        <div className="flex flex-col items-center gap-6 p-4 md:p-6">
+      <div className="h-[75vh] w-full overflow-y-auto">
+        <div className="flex flex-col items-center gap-4 p-2 md:gap-6 md:p-6 pb-8">
           {reels.map((reel, index) => (
             <Card
               key={reel.id}
               className={cn(
-                'w-full max-w-sm min-h-[500px] aspect-[9/16] flex flex-col justify-center transition-all hover:shadow-xl shadow-lg rounded-2xl cursor-pointer',
+                'w-full max-w-xs sm:max-w-sm min-h-[400px] sm:min-h-[500px] aspect-[9/16] flex flex-col justify-center transition-all hover:shadow-xl shadow-lg rounded-2xl cursor-pointer transform hover:scale-[1.02]',
                 cardColors[index % cardColors.length]
               )}
               onClick={() => handleOpenReel(reel)}
             >
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold font-headline text-foreground mb-4">
+              <CardContent className="p-4 sm:p-6 md:p-8 text-center flex flex-col justify-center h-full">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-headline text-foreground mb-2 sm:mb-4 leading-tight">
                   {reel.title}
                 </h3>
-                <p className="text-lg text-foreground/80">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed">
                   {reel.content}
                 </p>
               </CardContent>
             </Card>
           ))}
         </div>
-      </ScrollArea>
+      </div>
 
       {selectedReel && (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-0">
+        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 z-50 rounded-full bg-background/50 p-2 text-foreground hover:bg-background"
+            className="fixed top-4 right-4 z-50 rounded-full bg-background/80 p-3 text-foreground hover:bg-background shadow-lg border"
             aria-label="Close full screen view"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
-           <ScrollArea className="h-screen w-full" ref={fullScreenContainerRef}>
-                <div className="flex flex-col items-center gap-6 p-4 md:p-6 py-16">
-                {reels.map((reel, index) => {
-                    const isSelected = reel.id === selectedReel.id;
-                    return (
-                        <Card
-                            key={reel.id}
-                            ref={isSelected ? selectedReelRef : null}
-                            className={cn(
-                                'w-full max-w-sm min-h-[500px] aspect-[9/16] flex flex-col justify-center shadow-2xl rounded-2xl',
-                                cardColors[index % cardColors.length]
-                            )}
-                        >
-                            <CardContent className="p-8 text-center">
-                            <h3 className="text-3xl font-bold font-headline text-foreground mb-6">
-                                {reel.title}
-                            </h3>
-                            <p className="text-xl text-foreground/80">
-                                {reel.content}
-                            </p>
-                            </CardContent>
-                        </Card>
-                    );
-                })}
-                </div>
-          </ScrollArea>
+          
+          <div className="h-screen w-full overflow-y-auto pt-16 pb-6" ref={fullScreenContainerRef}>
+            <div className="flex flex-col items-center gap-4 px-2 sm:gap-6 sm:px-4 md:px-6">
+              {reels.map((reel, index) => {
+                const isSelected = reel.id === selectedReel.id;
+                return (
+                  <Card
+                    key={reel.id}
+                    ref={isSelected ? selectedReelRef : null}
+                    className={cn(
+                      'w-full max-w-xs sm:max-w-sm min-h-[400px] sm:min-h-[500px] aspect-[9/16] flex flex-col justify-center shadow-2xl rounded-2xl border-2',
+                      cardColors[index % cardColors.length],
+                      isSelected ? 'border-primary ring-4 ring-primary/20 scale-105' : 'border-transparent'
+                    )}
+                  >
+                    <CardContent className="p-4 sm:p-6 md:p-8 text-center flex flex-col justify-center h-full">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-headline text-foreground mb-4 sm:mb-6 leading-tight">
+                        {reel.title}
+                      </h3>
+                      <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed">
+                        {reel.content}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
         </div>
       )}
     </>

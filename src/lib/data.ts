@@ -1,4 +1,6 @@
 
+import { getVideoUrl, getDownloadUrl, estimateFileSize, estimateDuration } from './video-config';
+
 export type Flashcard = {
   id: string;
   question: string;
@@ -6,7 +8,7 @@ export type Flashcard = {
 };
 
 export type MCQ = {
-  id: string;
+  id   : string;
   question: string;
   options: string[];
   correctAnswer: string;
@@ -19,6 +21,19 @@ export type Reel = {
   imageId: string;
 };
 
+export type Video = {
+  id: string;
+  title: string;
+  description: string;
+  fileName: string;
+  chapterPart: string;
+  duration?: string;
+  thumbnailUrl?: string;
+  videoUrl: string;
+  downloadUrl?: string;
+  fileSize?: string;
+};
+
 export type Chapter = {
   id: string;
   title: string;
@@ -28,6 +43,7 @@ export type Chapter = {
   flashcards: Flashcard[];
   mcqs: MCQ[];
   reels: Reel[];
+  videos: Video[];
 };
 
 export const syllabus: Chapter[] = [
@@ -173,6 +189,63 @@ Economically, the era has been volatile. The dot-com bubble burst in 2000, and t
       { id: 'reel-1-19', title: 'Brexit', content: "The United Kingdom's 2016 vote to leave the European Union, a major event for the future of Europe.", imageId: 'reel-1-19' },
       { id: 'reel-1-20', title: 'The G20', content: "The Group of Twenty, a forum for the world's largest economies, which gained prominence after the 2008 financial crisis.", imageId: 'reel-1-20' },
     ],
+    videos: [
+      {
+        id: 'video-1-1',
+        title: 'World Since 1991 - Part 01',
+        description: 'Introduction to the post-Cold War world and major transformations since 1991',
+        fileName: "12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 01｜ HSC ARTS STREAM [TFFi8aaIfdA].mkv",
+        chapterPart: 'PART 01',
+        duration: estimateDuration("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 01｜ HSC ARTS STREAM [TFFi8aaIfdA].mkv"),
+        fileSize: estimateFileSize("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 01｜ HSC ARTS STREAM [TFFi8aaIfdA].mkv"),
+        videoUrl: getVideoUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 01｜ HSC ARTS STREAM [TFFi8aaIfdA].mkv"),
+        downloadUrl: getDownloadUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 01｜ HSC ARTS STREAM [TFFi8aaIfdA].mkv")
+      },
+      {
+        id: 'video-1-2',
+        title: 'World Since 1991 - Part 02: Towards Unipolarity',
+        description: 'Understanding the shift towards a unipolar world dominated by the United States',
+        fileName: "12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 02｜ Towards｜ Unipolarity｜ HSC ARTS STREAM [io6JND19kbY].mkv",
+        chapterPart: 'PART 02',
+        duration: estimateDuration("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 02｜ Towards｜ Unipolarity｜ HSC ARTS STREAM [io6JND19kbY].mkv"),
+        fileSize: estimateFileSize("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 02｜ Towards｜ Unipolarity｜ HSC ARTS STREAM [io6JND19kbY].mkv"),
+        videoUrl: getVideoUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 02｜ Towards｜ Unipolarity｜ HSC ARTS STREAM [io6JND19kbY].mkv"),
+        downloadUrl: getDownloadUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 02｜ Towards｜ Unipolarity｜ HSC ARTS STREAM [io6JND19kbY].mkv")
+      },
+      {
+        id: 'video-1-3',
+        title: 'World Since 1991 - Part 04',
+        description: 'Key developments and challenges in the post-Cold War international system',
+        fileName: "12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 04｜｜ HSC ARTS STREAM｜ HSC Exam [DyQ6eoHVXow].mkv",
+        chapterPart: 'PART 04',
+        duration: estimateDuration("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 04｜｜ HSC ARTS STREAM｜ HSC Exam [DyQ6eoHVXow].mkv"),
+        fileSize: estimateFileSize("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 04｜｜ HSC ARTS STREAM｜ HSC Exam [DyQ6eoHVXow].mkv"),
+        videoUrl: getVideoUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 04｜｜ HSC ARTS STREAM｜ HSC Exam [DyQ6eoHVXow].mkv"),
+        downloadUrl: getDownloadUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 04｜｜ HSC ARTS STREAM｜ HSC Exam [DyQ6eoHVXow].mkv")
+      },
+      {
+        id: 'video-1-4',
+        title: 'World Since 1991 - Part 05',
+        description: 'Continuation of post-Cold War developments and their global impact',
+        fileName: "12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 05｜｜ HSC ARTS STREAM｜ HSC Exam [1_-yLD7DNoI].mkv",
+        chapterPart: 'PART 05',
+        duration: estimateDuration("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 05｜｜ HSC ARTS STREAM｜ HSC Exam [1_-yLD7DNoI].mkv"),
+        fileSize: estimateFileSize("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 05｜｜ HSC ARTS STREAM｜ HSC Exam [1_-yLD7DNoI].mkv"),
+        videoUrl: getVideoUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 05｜｜ HSC ARTS STREAM｜ HSC Exam [1_-yLD7DNoI].mkv"),
+        downloadUrl: getDownloadUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ PART 05｜｜ HSC ARTS STREAM｜ HSC Exam [1_-yLD7DNoI].mkv")
+      },
+      {
+        id: 'video-1-5',
+        title: 'World Since 1991 - Full Exercise Solution (Part 06)',
+        description: 'Complete exercise solutions and exam preparation for Chapter 1',
+        fileName: "12th Pol. Science｜ Chp：-01 'World Since 1991｜ Full Exercise Solution｜PART 06｜HSC ARTS STREAM [y59tcIx_4DA].mkv",
+        chapterPart: 'PART 06',
+        duration: estimateDuration("12th Pol. Science｜ Chp：-01 'World Since 1991｜ Full Exercise Solution｜PART 06｜HSC ARTS STREAM [y59tcIx_4DA].mkv"),
+        fileSize: estimateFileSize("12th Pol. Science｜ Chp：-01 'World Since 1991｜ Full Exercise Solution｜PART 06｜HSC ARTS STREAM [y59tcIx_4DA].mkv"),
+        videoUrl: getVideoUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ Full Exercise Solution｜PART 06｜HSC ARTS STREAM [y59tcIx_4DA].mkv"),
+        downloadUrl: getDownloadUrl("12th Pol. Science｜ Chp：-01 'World Since 1991｜ Full Exercise Solution｜PART 06｜HSC ARTS STREAM [y59tcIx_4DA].mkv")
+      }
+    ],
   },
   {
     id: 'globalisation',
@@ -316,6 +389,26 @@ The debate around globalization is highly polarized. Proponents, like Thomas Fri
       { id: 'reel-2-19', title: 'Global Supply Chains', content: 'The complex, worldwide networks required to produce and distribute products, from raw materials to the final customer.', imageId: 'reel-2-19' },
       { id: 'reel-2-20', title: 'Cosmopolitanism', content: 'The philosophical idea that all of humanity belongs to a single community, reflecting the cultural side of globalization.', imageId: 'reel-2-20' },
     ],
+    videos: [
+      {
+        id: 'video-2-1',
+        title: 'Globalisation - Part 01',
+        description: 'Introduction to globalization concepts and its impact on the modern world',
+        fileName: "12th Pol. Science｜ Chp：-02 'Globalisation｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [qGth0gOgIIY].mkv",
+        chapterPart: 'PART 01',
+        videoUrl: '/pol videos/12th Pol. Science｜ Chp：-02 \'Globalisation｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [qGth0gOgIIY].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol. Science｜ Chp：-02 \'Globalisation｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [qGth0gOgIIY].mkv'
+      },
+      {
+        id: 'video-2-2',
+        title: 'Globalization - Part 06',
+        description: 'Advanced concepts in globalization and exam preparation',
+        fileName: "12th Pol.Science｜ Chp：-02 'Globalization｜ PART 06｜ HSC ARTS STREAM｜ HSC Exam [iyJ1dbJ9doA].mkv",
+        chapterPart: 'PART 06',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-02 \'Globalization｜ PART 06｜ HSC ARTS STREAM｜ HSC Exam [iyJ1dbJ9doA].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-02 \'Globalization｜ PART 06｜ HSC ARTS STREAM｜ HSC Exam [iyJ1dbJ9doA].mkv'
+      }
+    ],
   },
   {
     id: 'humanitarian-issues',
@@ -458,6 +551,62 @@ Furthermore, new "threat multipliers" have emerged. Climate change is increasing
       { id: 'reel-3-18', title: 'Statelessness', content: 'The condition of an individual who is not considered a national by any state. It severely limits access to basic rights.', imageId: 'reel-3-18' },
       { id: 'reel-3-19', title: 'Humanitarian Principles', content: 'Humanity, Neutrality, Impartiality, and Independence. These principles guide the work of aid organizations.', imageId: 'reel-3-19' },
       { id: 'reel-3-20', title: 'The CNN Effect', content: "The idea that 24/7 news coverage of suffering can pressure governments to intervene where they otherwise wouldn't.", imageId: 'reel-3-20' },
+    ],
+    videos: [
+      {
+        id: 'video-3-1',
+        title: 'Humanitarian Issues - Part 01',
+        description: 'Introduction to humanitarian issues and international challenges',
+        fileName: "12th Pol.Science｜ Chp：-03｜ Humanitarian Issues｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [jcgRuy16KqM].mkv",
+        chapterPart: 'PART 01',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03｜ Humanitarian Issues｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [jcgRuy16KqM].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03｜ Humanitarian Issues｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [jcgRuy16KqM].mkv'
+      },
+      {
+        id: 'video-3-2',
+        title: 'Humanitarian Issues - Part 02',
+        description: 'Exploring humanitarian crises and global responses',
+        fileName: "12th Pol.Science｜ Chp：-03 'Humanitarian Issues ｜ PART 02｜ HSC ARTS STREAM ｜ HSC Exam [LaWVaR1PuK0].mkv",
+        chapterPart: 'PART 02',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03 \'Humanitarian Issues ｜ PART 02｜ HSC ARTS STREAM ｜ HSC Exam [LaWVaR1PuK0].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03 \'Humanitarian Issues ｜ PART 02｜ HSC ARTS STREAM ｜ HSC Exam [LaWVaR1PuK0].mkv'
+      },
+      {
+        id: 'video-3-3',
+        title: 'Humanitarian Issues - Part 03',
+        description: 'Continuation of humanitarian issues study',
+        fileName: "12th Pol.Science｜ Chp：-03 ' Humanitarian Issues｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [69afqeeo7hs].mkv",
+        chapterPart: 'PART 03',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03 \' Humanitarian Issues｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [69afqeeo7hs].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03 \' Humanitarian Issues｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [69afqeeo7hs].mkv'
+      },
+      {
+        id: 'video-3-4',
+        title: 'Humanitarian Issues - Part 04',
+        description: 'Advanced topics in humanitarian law and intervention',
+        fileName: "12th Pol.Science｜ Chp：-03 'Humanitarian Issues｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [EW_skgOb6d8].mkv",
+        chapterPart: 'PART 04',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03 \'Humanitarian Issues｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [EW_skgOb6d8].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03 \'Humanitarian Issues｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [EW_skgOb6d8].mkv'
+      },
+      {
+        id: 'video-3-5',
+        title: 'Humanitarian Issues - Part 05',
+        description: 'Case studies and examples in humanitarian interventions',
+        fileName: "12th Pol.Science｜ Chp：-03 ' Humanitarian Issues｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [EVSiUlB3oPs].mkv",
+        chapterPart: 'PART 05',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03 \' Humanitarian Issues｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [EVSiUlB3oPs].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03 \' Humanitarian Issues｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [EVSiUlB3oPs].mkv'
+      },
+      {
+        id: 'video-3-6',
+        title: 'Humanitarian Issues - Part 06',
+        description: 'Final part covering humanitarian issues and exam preparation',
+        fileName: "12th Pol.Science ｜ Chp：-03 ' Humanitarian Issues｜ PART 06｜HSC ARTS STREAM｜ HSC Exam [a0gPdnJ-_ac].mkv",
+        chapterPart: 'PART 06',
+        videoUrl: '/pol videos/12th Pol.Science ｜ Chp：-03 \' Humanitarian Issues｜ PART 06｜HSC ARTS STREAM｜ HSC Exam [a0gPdnJ-_ac].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science ｜ Chp：-03 \' Humanitarian Issues｜ PART 06｜HSC ARTS STREAM｜ HSC Exam [a0gPdnJ-_ac].mkv'
+      }
     ],
   },
   {
@@ -604,6 +753,17 @@ Maintaining national integration in such a diverse country is the overarching ch
       { id: 'reel-4-19', title: '"Sons of the Soil" Politics', content: 'A form of nativism where local residents demand preferential treatment over migrants from other states.', imageId: 'reel-4-19' },
       { id: 'reel-4-20', title: 'Demographic Dividend', content: "India's large youth population offers huge potential for economic growth, but only if they are educated and employed.", imageId: 'reel-4-20' },
     ],
+    videos: [
+      {
+        id: 'video-4-1',
+        title: 'Challenges to Peace, Stability & Integration - ONE SHOT',
+        description: 'Comprehensive overview of contemporary India\'s challenges to peace, stability, and national integration',
+        fileName: "12th Pol.science｜Chp：-04｜ONE SHOT｜ 'Challenges to Peace, stability & Integration｜ HSC ARTS STREAM [Qurg2LQKauc].mkv",
+        chapterPart: 'ONE SHOT',
+        videoUrl: '/pol videos/12th Pol.science｜Chp：-04｜ONE SHOT｜ \'Challenges to Peace, stability & Integration｜ HSC ARTS STREAM [Qurg2LQKauc].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.science｜Chp：-04｜ONE SHOT｜ \'Challenges to Peace, stability & Integration｜ HSC ARTS STREAM [Qurg2LQKauc].mkv'
+      }
+    ],
   },
   {
     id: 'india-governance',
@@ -749,6 +909,53 @@ Other major governance reforms include the introduction of the Goods and Service
       { id: 'reel-5-19', title: 'Swachh Bharat Abhiyan', content: 'A nationwide cleanliness campaign to improve sanitation and eliminate open defecation.', imageId: 'reel-5-19' },
       { id: 'reel-5-20', title: 'Accountability', content: 'A core principle of good governance where public officials are answerable for their actions and decisions.', imageId: 'reel-5-20' },
     ],
+    videos: [
+      {
+        id: 'video-5-1',
+        title: 'Contemporary India: Good Governance - Part 01',
+        description: 'Introduction to good governance concepts and principles in India',
+        fileName: "12th Pol.Science｜ Chp：-05 'Comtemporary India： Good Governance｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [OzhQQSepk74].mkv",
+        chapterPart: 'PART 01',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-05 \'Comtemporary India： Good Governance｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [OzhQQSepk74].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-05 \'Comtemporary India： Good Governance｜ PART 01｜ HSC ARTS STREAM｜ HSC Exam [OzhQQSepk74].mkv'
+      },
+      {
+        id: 'video-5-2',
+        title: 'Contemporary India: Good Governance - Part 02',
+        description: 'Exploring governance structures and challenges in contemporary India',
+        fileName: "12th Pol.Science｜ Chp：-03 ' Contemporary India： Good Governance｜ PART 02｜ HSC ARTS STREAM｜ HSC Exam [CcUXe0kyKlY].mkv",
+        chapterPart: 'PART 02',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-03 \' Contemporary India： Good Governance｜ PART 02｜ HSC ARTS STREAM｜ HSC Exam [CcUXe0kyKlY].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-03 \' Contemporary India： Good Governance｜ PART 02｜ HSC ARTS STREAM｜ HSC Exam [CcUXe0kyKlY].mkv'
+      },
+      {
+        id: 'video-5-3',
+        title: 'Contemporary India: Good Governance - Part 03',
+        description: 'Administrative reforms and transparency measures',
+        fileName: "12th Pol.Science｜ Chp：-05 'Comtemporary India： Good Governance｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [FjJMbxgqOo0].mkv",
+        chapterPart: 'PART 03',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-05 \'Comtemporary India： Good Governance｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [FjJMbxgqOo0].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-05 \'Comtemporary India： Good Governance｜ PART 03｜ HSC ARTS STREAM｜ HSC Exam [FjJMbxgqOo0].mkv'
+      },
+      {
+        id: 'video-5-4',
+        title: 'Contemporary India: Good Governance - Part 04',
+        description: 'E-governance and digital initiatives in Indian administration',
+        fileName: "12th pol.Science｜ Chp：-05 'Comtemporary India Good Governance｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [1CxYUjLe_QM].mkv",
+        chapterPart: 'PART 04',
+        videoUrl: '/pol videos/12th pol.Science｜ Chp：-05 \'Comtemporary India Good Governance｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [1CxYUjLe_QM].mkv',
+        downloadUrl: '/api/download/pol videos/12th pol.Science｜ Chp：-05 \'Comtemporary India Good Governance｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [1CxYUjLe_QM].mkv'
+      },
+      {
+        id: 'video-5-5',
+        title: 'Contemporary India: Good Governance - Part 05',
+        description: 'Policy implementation and governance challenges',
+        fileName: "12th pol.science｜ Chp：-05 'Comtemporary India Good Governance｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [OQG8MbEiZe0].mkv",
+        chapterPart: 'PART 05',
+        videoUrl: '/pol videos/12th pol.science｜ Chp：-05 \'Comtemporary India Good Governance｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [OQG8MbEiZe0].mkv',
+        downloadUrl: '/api/download/pol videos/12th pol.science｜ Chp：-05 \'Comtemporary India Good Governance｜ PART 05｜ HSC ARTS STREAM｜ HSC Exam [OQG8MbEiZe0].mkv'
+      }
+    ],
   },
   {
     id: 'india-and-the-world',
@@ -893,6 +1100,53 @@ In the 21st century, India seeks to position itself as a "leading power" rather 
       { id: 'reel-6-18', title: 'Vaccine Maitri', content: 'Meaning "Vaccine Friendship," this was India\'s diplomatic initiative to supply millions of COVID-19 vaccines to countries worldwide.', imageId: 'reel-6-18' },
       { id: 'reel-6-19', title: 'International Solar Alliance', content: 'A major Indian diplomatic initiative to promote solar energy and combat climate change, headquartered in Gurugram, India.', imageId: 'reel-6-19' },
       { id: 'reel-6-20', title: 'Two-Front Challenge', content: "A strategic nightmare for India's military planners: the possibility of a coordinated conflict with both Pakistan and China simultaneously.", imageId: 'reel-6-20' },
+    ],
+    videos: [
+      {
+        id: 'video-6-1',
+        title: 'India & World - Part 01',
+        description: 'Introduction to India\'s foreign policy and international relations',
+        fileName: "12th Pol.Science｜ Chp：-06 ' India & World｜ PART 01｜ HSC ARTS STREAM｜ HSC EXAM [NLKI_fCooFs].mkv",
+        chapterPart: 'PART 01',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-06 \' India & World｜ PART 01｜ HSC ARTS STREAM｜ HSC EXAM [NLKI_fCooFs].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-06 \' India & World｜ PART 01｜ HSC ARTS STREAM｜ HSC EXAM [NLKI_fCooFs].mkv'
+      },
+      {
+        id: 'video-6-2',
+        title: 'India and The World - Part 02',
+        description: 'India\'s bilateral relations and strategic partnerships',
+        fileName: "12th Pol.Science｜ Chp：-06 'India and The World｜ PART 02 ｜ HSC ARTS STREAM｜ HSC Exam [XzD4Pzm0QBQ].mkv",
+        chapterPart: 'PART 02',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 02 ｜ HSC ARTS STREAM｜ HSC Exam [XzD4Pzm0QBQ].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 02 ｜ HSC ARTS STREAM｜ HSC Exam [XzD4Pzm0QBQ].mkv'
+      },
+      {
+        id: 'video-6-3',
+        title: 'India and The World - Part 03',
+        description: 'India\'s role in multilateral organizations and global governance',
+        fileName: "12th Pol.Science｜ Chp：-06 'India and The World｜ PART 03｜ HSC ARTS STREAM｜ HSC EXAM [kTxlYOACMvQ].mkv",
+        chapterPart: 'PART 03',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 03｜ HSC ARTS STREAM｜ HSC EXAM [kTxlYOACMvQ].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 03｜ HSC ARTS STREAM｜ HSC EXAM [kTxlYOACMvQ].mkv'
+      },
+      {
+        id: 'video-6-4',
+        title: 'India and The World - Part 04',
+        description: 'India\'s emerging global role and challenges',
+        fileName: "12th Pol. Science｜ Chp：-06 'India and The World｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [MzHXd7nJzLs].mkv",
+        chapterPart: 'PART 04',
+        videoUrl: '/pol videos/12th Pol. Science｜ Chp：-06 \'India and The World｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [MzHXd7nJzLs].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol. Science｜ Chp：-06 \'India and The World｜ PART 04｜ HSC ARTS STREAM｜ HSC Exam [MzHXd7nJzLs].mkv'
+      },
+      {
+        id: 'video-6-5',
+        title: 'India and The World - Part 05',
+        description: 'Future prospects of India\'s foreign policy and international engagement',
+        fileName: "12th Pol.Science｜ Chp：-06 'India and The World｜ PART 05｜ HSC ARTS STREAM｜ HSC EXAM [Ns0gyRcZjss].mkv",
+        chapterPart: 'PART 05',
+        videoUrl: '/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 05｜ HSC ARTS STREAM｜ HSC EXAM [Ns0gyRcZjss].mkv',
+        downloadUrl: '/api/download/pol videos/12th Pol.Science｜ Chp：-06 \'India and The World｜ PART 05｜ HSC ARTS STREAM｜ HSC EXAM [Ns0gyRcZjss].mkv'
+      }
     ],
   },
 ];

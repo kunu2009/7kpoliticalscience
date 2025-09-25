@@ -261,6 +261,31 @@ const SidebarMenuButton = React.forwardRef<
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
 
+// Additional sidebar components
+const SidebarSeparator = React.forwardRef<
+  React.ElementRef<typeof Separator>,
+  React.ComponentPropsWithoutRef<typeof Separator>
+>(({ className, ...props }, ref) => (
+  <Separator
+    ref={ref}
+    className={cn("mx-2 w-auto bg-sidebar-border", className)}
+    {...props}
+  />
+))
+SidebarSeparator.displayName = "SidebarSeparator"
+
+const SidebarGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("p-2", className)}
+    {...props}
+  />
+))
+SidebarGroup.displayName = "SidebarGroup"
+
 export {
   Sidebar,
   SidebarContent,
@@ -271,6 +296,8 @@ export {
   SidebarProvider,
   SidebarTrigger,
   SidebarClose,
+  SidebarSeparator,
+  SidebarGroup,
   useSidebar,
 }
 export type { SidebarContext }

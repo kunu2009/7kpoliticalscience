@@ -1,20 +1,50 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { Flashcard } from '@/lib/data';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { progressTracker } from '@/lib/progress';
 
-export function FlashcardsSection({ flashcards }: { flashcards: Flashcard[] }) {
+interface FlashcardsSectionProps {
+  flashcards: Flashcard[];
+  chapterId: string;
+}
+
+export function FlashcardsSection({ flashcards, chapterId }: FlashcardsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [viewedCards, setViewedCards] = useState<Set<number>>(new Set());
   
   const currentFlashcard = useMemo(() => flashcards[currentIndex], [flashcards, currentIndex]);
   const progress = useMemo(() => ((currentIndex + 1) / flashcards.length) * 100, [currentIndex, flashcards.length]);
+
+  // Initialize progress tracking when component mounts
+  useEffect(() => {
+    if (flashcards.length > 0) {
+      const currentProgress = progressTracker.getChapterProgress(chapterId);
+      if (!currentProgress) {
+        progressTracker.initializeChapterProgress(chapterId, {
+          flashcards: flashcards.length,
+          mcqs: 0,
+          videos: 0,
+          reels: 0
+        });
+      }
+    }
+  }, [chapterId, flashcards.length]);
+
+  // Track card views
+  useEffect(() => {
+    if (isFlipped && !viewedCards.has(currentIndex)) {
+      setViewedCards(prev => new Set([...prev, currentIndex]));
+      progressTracker.markFlashcardCompleted(chapterId, currentFlashcard.id);
+    }
+  }, [isFlipped, currentIndex, chapterId, viewedCards, currentFlashcard.id]);
 
   const handleNext = () => {
     setIsFlipped(false);

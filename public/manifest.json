@@ -1,21 +1,52 @@
 {
-  "name": "PolSci Guide",
-  "short_name": "PolSci Guide",
-  "description": "Your comprehensive guide to Political Science.",
+  "name": "7K Political Science",
+  "short_name": "7K PolSci",
+  "description": "Your comprehensive guide to 12th Grade Political Science - HSC Arts Stream",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#3b82f6",
+  "categories": ["education", "books", "reference"],
+  "lang": "en",
+  "scope": "/",
   "icons": [
     {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/7kpol-72x72.png",
+      "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/7kpol-96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
+    },
+    {
+      "src": "/7kpol-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/7kpol-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/7kpol-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/7kpol-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/7kpol-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

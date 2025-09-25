@@ -15,7 +15,7 @@ export default function MainLayout({
       <SyllabusSidebar />
       <div className="md:ml-64 flex flex-col h-screen">
           <MainHeader />
-          <main className="flex-1 overflow-y-auto pr-16">{children}</main>
+          <main className="flex-1 overflow-y-auto pr-14 sm:pr-16">{children}</main>
           <QuickAccessSidebar />
       </div>
     </SidebarProvider>

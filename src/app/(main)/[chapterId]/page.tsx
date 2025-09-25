@@ -11,7 +11,8 @@ import { FlashcardsSection } from './_components/flashcards-section';
 import { McqSection } from './_components/mcq-section';
 import { ReelsSection } from './_components/reels-section';
 import { ChapterReels } from './_components/chapter-reels';
-import { BookText, BrainCircuit, FileQuestion, Film, Lightbulb } from 'lucide-react';
+import { VideosSection } from './_components/videos-section';
+import { BookText, BrainCircuit, FileQuestion, Film, Lightbulb, Play } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export default function ChapterPage({
@@ -58,6 +59,10 @@ export default function ChapterPage({
                     <Film className="mr-2 h-4 w-4" />
                     Reels
                 </TabsTrigger>
+                <TabsTrigger value="videos">
+                    <Play className="mr-2 h-4 w-4" />
+                    Videos
+                </TabsTrigger>
             </TabsList>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
@@ -70,16 +75,19 @@ export default function ChapterPage({
           </Card>
         </TabsContent>
         <TabsContent value="flashcards">
-          <FlashcardsSection flashcards={chapter.flashcards} />
+          <FlashcardsSection flashcards={chapter.flashcards} chapterId={chapter.id} />
         </TabsContent>
         <TabsContent value="mcqs">
-          <McqSection mcqs={chapter.mcqs} />
+          <McqSection mcqs={chapter.mcqs} chapterId={chapter.id} />
         </TabsContent>
         <TabsContent value="key-concepts">
            <ReelsSection reels={chapter.reels} />
         </TabsContent>
         <TabsContent value="reels">
-            <ChapterReels reels={chapter.reels} />
+            <ChapterReels reels={chapter.reels} chapterId={chapter.id} />
+        </TabsContent>
+        <TabsContent value="videos">
+            <VideosSection videos={chapter.videos} chapterId={chapter.id} />
         </TabsContent>
       </Tabs>
     </div>

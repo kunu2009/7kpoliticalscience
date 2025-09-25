@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { MCQ } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,8 +10,14 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle } from 'lucide-react';
+import { progressTracker } from '@/lib/progress';
 
-export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
+interface McqSectionProps {
+  mcqs: MCQ[];
+  chapterId: string;
+}
+
+export function McqSection({ mcqs, chapterId }: McqSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -20,12 +26,31 @@ export function McqSection({ mcqs }: { mcqs: MCQ[] }) {
   const currentMcq = useMemo(() => mcqs[currentIndex], [mcqs, currentIndex]);
   const progress = useMemo(() => ((currentIndex) / mcqs.length) * 100, [currentIndex, mcqs.length]);
 
+  // Initialize progress tracking when component mounts
+  useEffect(() => {
+    if (mcqs.length > 0) {
+      const currentProgress = progressTracker.getChapterProgress(chapterId);
+      if (!currentProgress) {
+        progressTracker.initializeChapterProgress(chapterId, {
+          flashcards: 0,
+          mcqs: mcqs.length,
+          videos: 0,
+          reels: 0
+        });
+      }
+    }
+  }, [chapterId, mcqs.length]);
+
   const handleAnswerSubmit = () => {
     if (!selectedAnswer) return;
     setIsAnswered(true);
-    if (selectedAnswer === currentMcq.correctAnswer) {
+    const isCorrect = selectedAnswer === currentMcq.correctAnswer;
+    if (isCorrect) {
       setScore((prev) => prev + 1);
     }
+    
+    // Track MCQ completion
+    progressTracker.markMCQCompleted(chapterId, currentMcq.id, isCorrect);
   };
 
   const handleNext = () => {
