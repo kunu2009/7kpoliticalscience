@@ -1,86 +1,129 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
+import { useEffect, useRef, useState } from 'react';
+import { Download, ExternalLink } from 'lucide-react';
+import { getGoogleDriveVideo } from '@/lib/google-drive-videos';
 
 interface EnhancedVideoPlayerProps {
   src: string;
   poster?: string;
   className?: string;
+  fileName?: string; // Add fileName to check if it's a Google Drive video
 }
 
-export default function EnhancedVideoPlayer({ src, poster, className }: EnhancedVideoPlayerProps) {
-  const videoRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<any>(null);
+export default function EnhancedVideoPlayer({ src, poster, className, fileName }: EnhancedVideoPlayerProps) {
+  const [isGoogleDriveVideo, setIsGoogleDriveVideo] = useState(false);
+  const [googleDriveData, setGoogleDriveData] = useState<any>(null);
+  const [showFallback, setShowFallback] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // Make sure Video.js player is only initialized once
-    if (!playerRef.current && videoRef.current) {
-      // Create video element
-      const videoElement = document.createElement('video');
-      videoElement.controls = true;
-      videoElement.preload = 'metadata';
-      videoElement.className = className || 'video-js vjs-default-skin w-full h-full';
-      
-      if (poster) {
-        videoElement.poster = poster;
+    // Check if this is a Google Drive video (MKV format)
+    if (fileName && fileName.endsWith('.mkv')) {
+      const driveVideo = getGoogleDriveVideo(fileName);
+      if (driveVideo) {
+        setIsGoogleDriveVideo(true);
+        setGoogleDriveData(driveVideo);
       }
-      
-      videoRef.current.appendChild(videoElement);
-
-      // Initialize Video.js player
-      const player = videojs(videoElement, {
-        controls: true,
-        responsive: true,
-        fluid: true,
-        preload: 'metadata',
-        sources: [
-          {
-            src: src,
-            type: 'video/x-matroska'
-          },
-          {
-            src: src,
-            type: 'video/mp4'
-          }
-        ],
-        html5: {
-          vhs: {
-            overrideNative: true
-          }
-        }
-      });
-
-      playerRef.current = player;
-
-      // Handle errors
-      player.on('error', () => {
-        const error = player.error();
-        console.error('Video.js error:', error);
-        
-        // Fallback to native HTML5 video if Video.js fails
-        if (videoRef.current) {
-          videoRef.current.innerHTML = `
-            <video controls class="${className || 'w-full h-full'}" ${poster ? `poster="${poster}"` : ''}>
-              <source src="${src}" type="video/x-matroska">
-              <source src="${src}" type="video/mp4">
-              <p>Your browser does not support the video format. 
-                 <a href="${src}" download>Download the video</a> instead.
-              </p>
-            </video>
-          `;
-        }
-      });
     }
+  }, [fileName]);
 
-    return () => {
-      if (playerRef.current && !playerRef.current.isDisposed()) {
-        playerRef.current.dispose();
-        playerRef.current = null;
-      }
-    };
-  }, [src, poster, className]);
+  // For Google Drive videos (MKV), use iframe embed
+  if (isGoogleDriveVideo && googleDriveData) {
+    return (
+      <div className={`relative ${className}`}>
+        {!showFallback ? (
+          <>
+            <iframe
+              ref={iframeRef}
+              src={googleDriveData.streamUrl}
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              onError={() => setShowFallback(true)}
+              style={{ minHeight: '400px' }}
+            />
+            <div className="absolute bottom-2 right-2 flex gap-2">
+              <a
+                href={googleDriveData.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow-lg transition-colors"
+                title="Download Video"
+              >
+                <Download size={16} />
+              </a>
+              <a
+                href={`https://drive.google.com/file/d/${googleDriveData.fileId}/view`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-600 hover:bg-gray-700 text-white p-2 rounded-full shadow-lg transition-colors"
+                title="Open in Google Drive"
+              >
+                <ExternalLink size={16} />
+              </a>
+            </div>
+          </>
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 rounded-lg p-8 text-center">
+            <div className="mb-4">
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Download className="w-8 h-8 text-red-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                Video Format Not Supported
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Your browser cannot play this MKV video format directly.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href={googleDriveData.downloadUrl}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+              >
+                <Download size={16} />
+                Download Video
+              </a>
+              <a
+                href={`https://drive.google.com/file/d/${googleDriveData.fileId}/view`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+              >
+                <ExternalLink size={16} />
+                Open in Google Drive
+              </a>
+            </div>
+            <p className="text-sm text-gray-500 mt-4">
+              Download and play with VLC Media Player or similar
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }
 
-  return <div ref={videoRef} className={className} />;
+  // For regular videos, use HTML5 video element
+  return (
+    <div className={`relative ${className}`}>
+      <video
+        controls
+        preload="metadata"
+        poster={poster}
+        className="w-full h-full rounded-lg"
+        onError={() => setShowFallback(true)}
+      >
+        <source src={src} type="video/mp4" />
+        <source src={src} type="video/webm" />
+        <p>
+          Your browser does not support the video tag.{' '}
+          <a href={src} download className="text-blue-600 hover:underline">
+            Download the video
+          </a>{' '}
+          instead.
+        </p>
+      </video>
+    </div>
+  );
 }

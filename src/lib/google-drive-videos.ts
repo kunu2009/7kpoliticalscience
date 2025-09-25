@@ -162,7 +162,7 @@ export function getGoogleDriveVideo(fileName: string): GoogleDriveVideo | null {
 
   return {
     ...video,
-    streamUrl: getGoogleDriveDirectUrl(video.fileId),
+    streamUrl: getGoogleDriveStreamUrl(video.fileId), // Use embedded player for MKV compatibility
     downloadUrl: getGoogleDriveDownloadUrl(video.fileId),
   };
 }

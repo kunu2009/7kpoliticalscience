@@ -7,6 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Play, Download, FileVideo, Clock, HardDrive, AlertCircle } from 'lucide-react';
 import { progressTracker } from '@/lib/progress';
+import EnhancedVideoPlayer from '@/components/enhanced-video-player';
+
+interface VideosSectionProps {
+  videos: Video[];
+  chapterId: string;
+}
 
 interface VideosSectionProps {
   videos: Video[];
@@ -16,7 +22,6 @@ interface VideosSectionProps {
 export function VideosSection({ videos, chapterId }: VideosSectionProps) {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [videoError, setVideoError] = useState<boolean>(false);
 
   // Initialize progress tracking when component mounts
   useEffect(() => {
@@ -49,7 +54,6 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
   const handlePlayVideo = (video: Video) => {
     setSelectedVideo(video);
     setIsPlaying(true);
-    setVideoError(false);
   };
 
   const handleDownload = async (video: Video) => {
@@ -71,7 +75,6 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
 
   const handleVideoError = () => {
     console.error('Video loading error for:', selectedVideo?.fileName);
-    setVideoError(true);
   };
 
   // Track video watch time
@@ -92,52 +95,14 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
             <CardDescription>{selectedVideo.description}</CardDescription>
           </CardHeader>
           <CardContent>
-            {!videoError ? (
-              <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden">
-                <video
-                  controls
-                  className="w-full h-full"
-                  src={selectedVideo.videoUrl}
-                  poster="/api/placeholder/800/450"
-                  onError={handleVideoError}
-                  onTimeUpdate={(e) => {
-                    const video = e.target as HTMLVideoElement;
-                    handleVideoTimeUpdate(selectedVideo, video.currentTime);
-                  }}
-                  onLoadStart={() => console.log('Video loading started:', selectedVideo.fileName)}
-                  onLoadedMetadata={() => console.log('Video metadata loaded:', selectedVideo.fileName)}
-                >
-                  <source src={selectedVideo.videoUrl} type="video/x-matroska" />
-                  <source src={selectedVideo.videoUrl} type="video/mp4" />
-                  Your browser does not support this video format.
-                </video>
-              </div>
-            ) : (
-              /* Error fallback */
-              <div className="relative aspect-video bg-gray-800 rounded-lg flex flex-col items-center justify-center text-white p-6 text-center">
-                <div className="mb-4">
-                  <AlertCircle className="w-16 h-16 mx-auto mb-2 text-yellow-400" />
-                  <h3 className="text-lg font-semibold mb-2">Video Format Not Supported</h3>
-                  <p className="text-sm text-gray-300 mb-4">
-                    Your browser cannot play this MKV video format directly.
-                  </p>
-                </div>
-                
-                <div className="space-y-2">
-                  <Button
-                    onClick={() => handleDownload(selectedVideo)}
-                    className="inline-flex items-center"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download Video
-                  </Button>
-                  
-                  <p className="text-xs text-gray-400">
-                    Download and play with VLC Media Player or similar
-                  </p>
-                </div>
-              </div>
-            )}
+            <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden">
+              <EnhancedVideoPlayer
+                src={selectedVideo.videoUrl}
+                fileName={selectedVideo.fileName}
+                className="w-full h-full"
+                poster="/api/placeholder/800/450"
+              />
+            </div>
             <div className="mt-4 flex flex-wrap gap-2 justify-between items-center">
               <div className="flex gap-2">
                 <Badge variant="secondary">{selectedVideo.chapterPart}</Badge>
@@ -215,9 +180,9 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
                       {video.fileSize}
                     </span>
                   )}
-                  <span className="flex items-center gap-1 text-orange-600">
+                  <span className="flex items-center gap-1 text-green-600">
                     <AlertCircle className="h-3 w-3" />
-                    MKV format
+                    Google Drive
                   </span>
                 </div>
 
@@ -229,7 +194,7 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
                     size="sm"
                   >
                     <Play className="h-4 w-4 mr-2" />
-                    Try Play
+                    Play Video
                   </Button>
                   <Button 
                     variant="outline" 
@@ -246,19 +211,19 @@ export function VideosSection({ videos, chapterId }: VideosSectionProps) {
       </div>
 
       {/* Browser Compatibility Notice */}
-      <Card className="bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800">
+      <Card className="bg-green-50 border-green-200 dark:bg-green-950/20 dark:border-green-800">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
+            <AlertCircle className="h-5 w-5 text-green-600 mt-0.5 shrink-0" />
             <div>
-              <h3 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">
-                Video Format Notice
+              <h3 className="font-semibold text-green-800 dark:text-green-200 mb-2">
+                Enhanced Video Streaming
               </h3>
-              <div className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
-                <p>• These videos are in MKV format, which may not play directly in all web browsers</p>
-                <p>• If a video doesn't play, use the <strong>Download</strong> button to save it locally</p>
-                <p>• Recommended players: <strong>VLC Media Player</strong>, Windows Media Player, or similar</p>
-                <p>• Videos are high quality with compressed file sizes for efficient learning</p>
+              <div className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                <p>• Videos now stream seamlessly from Google Drive with automatic format detection</p>
+                <p>• MKV files are displayed using Google Drive's built-in player for better compatibility</p>
+                <p>• Use the <strong>Download</strong> button if you prefer offline viewing</p>
+                <p>• All videos are high quality with optimized streaming for fast loading</p>
               </div>
             </div>
           </div>
