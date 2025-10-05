@@ -39,7 +39,7 @@ export type Chapter = {
   title: string;
   content: string;
   summary: string;
-  keyTerms: { term: string }[];
+  keyTerms: { term: string; definition: string }[];
   flashcards: Flashcard[];
   mcqs: MCQ[];
   reels: Reel[];
@@ -62,7 +62,16 @@ The turn of the century brought new, asymmetric threats. The September 11, 2001 
 Economically, the era has been volatile. The dot-com bubble burst in 2000, and the 2008 global financial crisis exposed deep vulnerabilities in the international financial system, leading to a worldwide recession and triggering a backlash against neoliberal globalization. This discontent fueled the rise of populist movements across the globe. Concurrently, the world witnessed the spectacular economic rise of China, whose integration into the global economy challenged American pre-eminence and began to shift the international balance of power, leading some analysts to declare the end of the unipolar moment and the dawn of a new multipolar or bipolar era. The 21st century has also been defined by the growing urgency of climate change, the transformative impact of social media, and widespread popular uprisings like the Arab Spring, all of which continue to shape our turbulent world.
     `,
     summary: 'An overview of the major political, economic, and social transformations that have shaped the world since the end of the Cold War in 1991.',
-    keyTerms: [{ term: 'globalization' }],
+    keyTerms: [
+      { term: 'Partition of India', definition: 'The division of British India into two independent dominions, India and Pakistan, on August 15, 1947, leading to massive communal violence and displacement of 15 million people.' },
+      { term: 'Princely States', definition: 'Autonomous kingdoms under British paramountcy that had to decide whether to join India or Pakistan after independence. There were over 560 princely states.' },
+      { term: 'Instrument of Accession', definition: 'Legal document signed by princely state rulers to merge their states with either India or Pakistan, transferring sovereignty to the new dominions.' },
+      { term: 'States Reorganisation Commission', definition: 'Commission established in 1953 under Fazl Ali to reorganize Indian states on linguistic basis, leading to the States Reorganisation Act of 1956.' },
+      { term: 'Linguistic Reorganization', definition: 'Reorganization of Indian states based on language as the primary criterion, implemented after the States Reorganisation Act 1956.' },
+      { term: 'National Integration', definition: 'The process of unifying diverse cultural, linguistic, religious and regional groups into a cohesive nation with shared identity and common goals.' },
+      { term: 'Communalism', definition: 'Political ideology that emphasizes religious identity over national identity, often leading to conflict between religious communities.' },
+      { term: 'Regionalism', definition: 'Excessive attachment to one\'s region or state, potentially threatening national unity and promoting separatist tendencies.' }
+    ],
     flashcards: [
         { id: 'fc-1-1', question: 'What were the main consequences of the disintegration of the Soviet Union?', answer: 'The end of the Cold War, the emergence of a unipolar world led by the US, the independence of 15 new countries, and a shift in international power dynamics.' },
         { id: 'fc-1-2', question: 'What is a unipolar world order?', answer: 'An international system in which one state exercises most of the cultural, economic, and military influence. After 1991, the United States was considered the sole superpower.' },
@@ -262,7 +271,17 @@ Cultural globalization describes the transmission of ideas, meanings, and values
 The debate around globalization is highly polarized. Proponents, like Thomas Friedman who famously declared "The World is Flat," argue that it fosters economic efficiency, spreads democratic values, and creates a more interconnected and understanding "global village." Critics, such as Joseph Stiglitz and Naomi Klein, argue that the current form of corporate-led globalization has exacerbated inequality, undermined democracy, and caused significant social and environmental harm. The rise of populist and nationalist movements in the 21st century can be seen, in part, as a political backlash against some of the perceived negative consequences of globalization.
     `,
     summary: 'This chapter explores the multifaceted concept of globalization, examining its economic, political, and cultural impacts on the modern world.',
-    keyTerms: [{ term: 'Globalisation' }, { term: 'neoliberalism' }],
+    keyTerms: [
+      { term: 'Globalisation', definition: 'The process of increasing interconnectedness and interdependence among countries through trade, investment, technology, and cultural exchange.' },
+      { term: 'GATT', definition: 'General Agreement on Tariffs and Trade, established in 1947 to promote international trade by reducing tariffs and other trade barriers.' },
+      { term: 'WTO', definition: 'World Trade Organization, established on January 1, 1995, replacing GATT to regulate international trade and resolve trade disputes.' },
+      { term: 'TRIPs', definition: 'Trade-Related Aspects of Intellectual Property Rights, WTO agreement establishing minimum standards for intellectual property regulation.' },
+      { term: 'GATS', definition: 'General Agreement on Trade in Services, WTO agreement extending multilateral trading system to service sector.' },
+      { term: 'Economic Liberalism', definition: 'India\'s economic policy emphasizing market forces, reducing government intervention, and promoting private enterprise.' },
+      { term: 'Cultural Globalisation', definition: 'Spread of ideas, values, and cultural products across national boundaries, leading to cultural homogenization and exchange.' },
+      { term: 'NGOs', definition: 'Non-Governmental Organizations that operate independently of government to address social, environmental, or humanitarian issues (e.g., Amnesty International, Green Peace).' },
+      { term: 'Third World Perspective', definition: 'Viewpoint emphasizing collective rights, community welfare, and socio-economic rights over individual political rights.' }
+    ],
     flashcards: [
         { id: 'fc-2-1', question: 'What are the three main dimensions of globalization?', answer: 'Economic globalization (flow of capital/goods), Political globalization (influence of international organizations), and Cultural globalization (spread of ideas/values).' },
         { id: 'fc-2-2', question: 'What is a Transnational Corporation (TNC)?', answer: 'A company that operates in more than one country. TNCs are key drivers of economic globalization.' },
@@ -425,7 +444,14 @@ In this context, the role of non-state actors has grown significantly. Non-gover
 Furthermore, new "threat multipliers" have emerged. Climate change is increasingly recognized as a major driver of humanitarian need, exacerbating droughts, floods, and resource conflicts, leading to food insecurity and displacement. Pandemics, as starkly demonstrated by the COVID-19 crisis, can overwhelm health systems, devastate economies, and deepen existing inequalities on a global scale. The distinction between a refugee (who has crossed an international border) and an Internally Displaced Person (IDP, who remains within their country) has also become a critical policy challenge, as IDPs now far outnumber refugees but often lack the same legal protections. The international humanitarian system, based on principles of humanity, neutrality, impartiality, and independence, is under immense strain to adapt to these evolving and interconnected challenges.
     `,
     summary: 'Examines major humanitarian challenges since 1991, including conflicts, refugees, and the international response to crises.',
-    keyTerms: [{ term: 'humanitarian_crises' }, { term: 'Responsibility_to_Protect' }],
+    keyTerms: [
+      { term: 'Humanitarian Crisis', definition: 'Large-scale emergency affecting human life, health, and safety, often requiring international intervention and assistance.' },
+      { term: 'Responsibility to Protect (R2P)', definition: 'International principle that sovereignty is not absolute and the international community has responsibility to protect populations from genocide, war crimes, ethnic cleansing, and crimes against humanity.' },
+      { term: 'Ethnic Cleansing', definition: 'Systematic forced removal or extermination of ethnic, racial, or religious groups from a geographic area.' },
+      { term: 'Genocide', definition: 'Deliberate and systematic destruction of a racial, ethnic, national, or religious group.' },
+      { term: 'Refugee Crisis', definition: 'Mass displacement of people fleeing war, persecution, or natural disasters, creating humanitarian emergencies.' },
+      { term: 'War Crimes', definition: 'Serious violations of international humanitarian law during armed conflict, including targeting civilians and torture.' }
+    ],
     flashcards: [
         { id: 'fc-3-1', question: 'What was the significance of the Stockholm Conference 1972?', answer: 'The first global conference on environment issues, held in Stockholm, Sweden in 1972, which established international environmental cooperation and led to the creation of UNEP.' },
         { id: 'fc-3-2', question: 'What is the Brundtland Commission and when was it formed?', answer: 'The World Commission on Environment and Development formed in 1983, which popularized the concept of sustainable development and produced the report "Our Common Future".' },
@@ -626,7 +652,16 @@ In terms of security, India faces both external and internal threats. The unreso
 Maintaining national integration in such a diverse country is the overarching challenge. India's success lies in its ability to navigate these complex and often overlapping fault lines through democratic negotiation, constitutional mechanisms, and a commitment to a pluralistic national identity.
     `,
     summary: 'An analysis of the internal and external challenges facing India, including regional conflicts, security threats, and issues of national unity.',
-    keyTerms: [{ term: 'Kashmir' }, { term: 'communalism' }, { term: 'regionalism' }, { term: 'caste system' }],
+    keyTerms: [
+      { term: 'National Integration', definition: 'The process of creating a unified nation from diverse linguistic, cultural, religious, and regional groups, promoting common identity and shared values.' },
+      { term: 'National Integration Council', definition: 'Council founded in 1961 to combat communalism, casteism, regionalism, and linguism, promoting common citizenship and unity in diversity.' },
+      { term: 'Communalism', definition: 'Ideology emphasizing religious identity over national identity, often leading to communal violence and conflict between religious communities.' },
+      { term: 'Regionalism', definition: 'Excessive loyalty to one\'s region or state, potentially threatening national unity through demands for autonomy or separation.' },
+      { term: 'Cross-border Terrorism', definition: 'Terrorism originating from across international borders, particularly in Jammu & Kashmir from Pakistan-based groups like Jaish-e-Mohammed and Lashkar-e-Taiba.' },
+      { term: 'Left Wing Extremism', definition: 'Violent communist insurgency (Naxalism/Maoism) challenging state authority, particularly in Red Corridor states, based on Charu Majumdar\'s ideology.' },
+      { term: 'Panchayat Raj', definition: 'System of local self-government strengthened by 73rd and 74th Constitutional Amendments in the 1990s, empowering village and urban local bodies.' },
+      { term: 'Psychological Integration', definition: 'Emotional and cultural unity fostered through national symbols (National Song, Flag, Anthem, Emblem, Bird, Animal) and shared historical narratives.' }
+    ],
     flashcards: [
         { id: 'fc-4-1', question: 'What is Communalism in the Indian context?', answer: 'It is an ideology that promotes the interests of a particular religious group, often in opposition to the interests of other groups, posing a threat to national unity.' },
         { id: 'fc-4-2', question: 'What is the Naxalite-Maoist insurgency?', answer: 'A left-wing extremist movement primarily in rural and tribal areas of central and eastern India. They claim to be fighting for the rights of the poor and marginalized.' },
@@ -782,7 +817,18 @@ In this context, the role of {civil_society_organizations} (CSOs) is crucial. Fr
 Other major governance reforms include the introduction of the Goods and Services Tax (GST) to create a unified national market, the "Make in India" initiative to boost manufacturing, and the "Swachh Bharat Abhiyan" (Clean India Mission) for sanitation. The NITI Aayog, which replaced the Planning Commission, was established to foster "cooperative federalism" and act as a policy think tank. These initiatives collectively represent an ongoing effort to make the Indian state more responsive, accountable, and effective in meeting the aspirations of its citizens.
     `,
     summary: 'This chapter covers the concept of good governance in India, including key reforms, challenges like corruption, and the role of civil society.',
-    keyTerms: [{ term: 'Good_governance' }, { term: 'Right_to_Information' }, { term: 'E-governance' }, { term: 'Corruption' }, { term: 'civil_society_organizations' }],
+    keyTerms: [
+      { term: 'Good Governance', definition: 'Governance that is participatory, transparent, accountable, effective, efficient, responsive, equitable, inclusive, follows rule of law, and is consensus-oriented.' },
+      { term: 'Right to Information (RTI)', definition: 'Fundamental right enacted through RTI Act 2005, empowering citizens to question government and promoting transparency and accountability in public authorities.' },
+      { term: 'E-Governance', definition: 'Use of Information and Communication Technology (ICT) to provide and improve government services, transactions, and interactions with citizens and businesses.' },
+      { term: 'Lokpal and Lokayukta', definition: 'Anti-corruption ombudsman bodies; Lokpal at central level (Act 2013, first Lokpal 2019) and Lokayuktas at state level (Maharashtra first state 1972).' },
+      { term: 'Transparency', definition: 'Good governance value ensuring openness in government operations, challenging secrecy through mechanisms like RTI Act 2005.' },
+      { term: 'Accountability', definition: 'Principle that public officials and institutions must answer for their actions and decisions, enabling citizens to hold government responsible.' },
+      { term: 'Citizens\' Charters', definition: 'Documents introduced in 1996 that outline service standards citizens can expect from public bodies and complaint mechanisms.' },
+      { term: 'Participatory Governance', definition: 'Bottom-up approach ensuring people\'s participation and voices are heard in decision-making processes through legitimate institutions.' },
+      { term: 'National Commission for SCs', definition: 'Body monitoring safeguards for Scheduled Castes, investigating complaints, participating in planning, and evaluating their socio-economic development.' },
+      { term: 'National Commission for Women', definition: 'Commission established in 1990 to investigate legal safeguards for women, review laws affecting women, and promote their socio-economic development.' }
+    ],
     flashcards: [
         { id: 'fc-5-1', question: 'What is "Good Governance"?', answer: 'It refers to the process of decision-making and implementation that is participatory, consensus-oriented, accountable, transparent, responsive, effective, equitable, and follows the rule of law.' },
         { id: 'fc-5-2', question: 'What is the main objective of the Right to Information (RTI) Act, 2005?', answer: 'To empower citizens to question the government and its working, thereby promoting transparency and accountability in the working of every public authority.' },
@@ -974,7 +1020,15 @@ Managing its neighborhood remains a primary challenge. The "{Neighborhood_First}
 In the 21st century, India seeks to position itself as a "leading power" rather than just a "balancing power." It is a major contributor to UN peacekeeping, a vocal advocate for reforms in global governance institutions like the UN Security Council, and is increasingly using its "soft power" (culture, diaspora, developmental assistance) to enhance its global standing.
     `,
     summary: "An exploration of India's foreign policy, its strategic partnerships, and its role in global and regional politics.",
-    keyTerms: [{ term: 'non_alignment' }, { term: 'Look_East_Policy' }, { term: 'Act_East_Policy' }, { term: 'United_States' }, { term: 'BRICS' }, { term: 'Neighborhood_First' }, { term: 'China' }, { term: 'Pakistan' }],
+    keyTerms: [
+      { term: 'Non-Alignment', definition: 'India\'s Cold War foreign policy principle of not formally aligning with or against any major power bloc (USA or USSR), maintaining strategic autonomy.' },
+      { term: 'Look East Policy', definition: 'Foreign policy initiative to establish economic and strategic cooperation with countries in Southeast and East Asia.' },
+      { term: 'Act East Policy', definition: 'Evolution of Look East Policy aiming for deeper and more strategic economic and security cooperation with Southeast and East Asian countries.' },
+      { term: 'BRICS', definition: 'Group of five major emerging economies - Brazil, Russia, India, China, and South Africa - seeking to enhance cooperation and global influence.' },
+      { term: 'Neighborhood First', definition: 'Foreign policy priority focusing on building friendly and mutually beneficial relationships with South Asian neighbors.' },
+      { term: 'Strategic Autonomy', definition: 'India\'s approach to maintaining independent decision-making in foreign policy while building multiple strategic partnerships.' },
+      { term: 'Soft Power', definition: 'Use of culture, diaspora, developmental assistance, and values to enhance India\'s global standing and influence.' }
+    ],
     flashcards: [
         { id: 'fc-6-1', question: "What was the core principle of India's foreign policy during the Cold War?", answer: 'Non-Alignment, which meant not formally aligning with or against any major power bloc (USA or USSR).' },
         { id: 'fc-6-2', question: 'What is the "Act East Policy"?', answer: 'An evolution of the "Look East Policy," it aims to establish deeper and more strategic economic and security cooperation with countries in Southeast and East Asia.' },
