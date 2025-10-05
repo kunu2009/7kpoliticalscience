@@ -17,6 +17,7 @@ import { usePathname } from 'next/navigation';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { syllabus } from '@/lib/data';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export function SyllabusSidebar() {
   const pathname = usePathname();
@@ -31,14 +32,22 @@ export function SyllabusSidebar() {
 
   return (
     <Sidebar>
-        <SidebarHeader className="flex items-center justify-between">
-           <Button variant="ghost" asChild>
-              <Link href="/">
-                <Home className="h-6 w-6" />
-                <span className="ml-2 font-bold group-data-[collapsed=icon]:hidden">Dashboard</span>
-              </Link>
-            </Button>
-          <SidebarClose className="md:hidden" />
+        <SidebarHeader className="flex flex-col items-start gap-3 p-4">
+          <Link href="/" className="flex items-center gap-3 w-full">
+            <Image 
+              src="/7kpol-96x96.png" 
+              alt="7K Political Science Logo" 
+              width={48} 
+              height={48}
+              className="rounded-lg shadow-md"
+              priority
+            />
+            <div className="flex flex-col group-data-[collapsed=icon]:hidden">
+              <span className="font-bold text-base bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">7K Political Science</span>
+              <span className="text-xs text-muted-foreground">HSC Study Guide</span>
+            </div>
+          </Link>
+          <SidebarClose className="md:hidden absolute right-4 top-4" />
         </SidebarHeader>
         <SidebarContent>
             <SidebarMenu>

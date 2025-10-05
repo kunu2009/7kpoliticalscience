@@ -2,9 +2,11 @@
 
 <div align="center">
 
-![7K Political Science Logo](public/7kpol-512x512.png)
+<img src="public/7kpol-512x512.png" alt="7K Political Science Logo" width="200" height="200" />
 
 **A comprehensive study companion for Maharashtra State Board HSC Political Science (Standard XII)**
+
+*Powered by the 7K logo - representing knowledge, wisdom, and academic excellence*
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
