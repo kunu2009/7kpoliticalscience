@@ -1,7 +1,3 @@
 {
-  "version": 2,
-  "buildCommand": "cd 7kpoliticalscience && npm install && npm run build",
-  "outputDirectory": "7kpoliticalscience/.next",
-  "installCommand": "cd 7kpoliticalscience && npm install",
-  "framework": "nextjs"
+  "version": 2
 }
